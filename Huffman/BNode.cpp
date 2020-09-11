@@ -1,16 +1,14 @@
 #include "BNode.h"
 
-BNode::BNode(): left(nullptr), right(nullptr) {}
+BNode::BNode() {}
 
-BNode::BNode(char character): character(character),
-		left(nullptr), right(nullptr) {}
+BNode::BNode(char character): character(character) {}
 
 BNode::BNode(BNode* left, BNode* right):
 	left(left), right(right) {}
 
 BNode::BNode(BNode* left, BNode* right, BNode* parent) :
 	left(left), right(right), parent(parent) {}
-
 
 BNode* BNode::getLeft() {
 	return left;

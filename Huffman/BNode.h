@@ -1,6 +1,10 @@
 #pragma once
 #include "HelpfulMethods.h"
 
+/*
+BNode is a binary Node used in creating huffman tree of codes.
+*/
+
 class BNode {
 public:
 	BNode();
@@ -19,12 +23,13 @@ public:
 	void setCharacter(char newCharacter);
 	
 	bool isALeaf();
+	
 	~BNode();
 
 private:
 	char character;
-	BNode* left;
-	BNode* right;
-	BNode* parent;
+	BNode* left = nullptr;
+	BNode* right = nullptr;
+	BNode* parent = nullptr;
 };
 

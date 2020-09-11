@@ -1,19 +1,11 @@
 #include "TextCompressor.h"
 using namespace std;
 
-TextCompressor::TextCompressor(): textPtr(nullptr),
-				codesTree(nullptr),
-				compressedTextPtr(nullptr),
-				dfsCodePtr(nullptr),
-				charactersDfsOrderPtr(nullptr) {}
+TextCompressor::TextCompressor() {}
 
-TextCompressor::TextCompressor(string* textPtr, BNode* codesTree) :
-	textPtr(textPtr),
-	codesTree(codesTree),
-	compressedTextPtr(nullptr),
-	dfsCodePtr(nullptr),
-	charactersDfsOrderPtr(nullptr)
-{}
+TextCompressor::TextCompressor(string* textPtr, BNode* codesTree)
+	           :textPtr(textPtr),
+	            codesTree(codesTree) {}
 
 void TextCompressor::setTextPtr(string* newTextPtr) {
 	textPtr = newTextPtr;
@@ -45,11 +37,10 @@ void TextCompressor::createDfsInfo() {
 	dfsTree(codesTree, "");
 }
 
-void TextCompressor::writeCompressed(unsigned char bit) {
-	std::cout << (int)bit;
+void TextCompressor::writeCompressed(unsigned char bit) { //unsigned char because signed has left bit as sign bit
 	string& compressedTextRef = *compressedTextPtr;
 	bit *= 128;
-	char discharge = (bit >> byteOffset); //??????????????????
+	char discharge = (bit >> byteOffset);
 	compressedTextRef[byteNumber] |= discharge; 
 
 	if (byteOffset == 7) {
@@ -62,7 +53,7 @@ void TextCompressor::writeCompressed(unsigned char bit) {
 
 void TextCompressor::writeCompressed(string code) {
 	for (char &charCode : code) {
-		writeCompressed(charCode - 48);
+		writeCompressed(charCode - '0'); //48 is ascii of zero
 	}
 }
 
@@ -92,7 +83,7 @@ std::string* TextCompressor::getCompressedTextPtr() {
 void TextCompressor::compress() {
 	charactersDfsOrderPtr = new string{};
 	dfsCodePtr = new string{};
-	compressedTextPtr = new string {};
+	compressedTextPtr = new string{};
 	createDfsInfo();
 	createCompressedText();
 }

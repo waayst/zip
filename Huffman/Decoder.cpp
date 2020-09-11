@@ -31,10 +31,8 @@ char Decoder::getCode() {
 
 void Decoder::moveNode(char bit) {
 	if (bit == 0) {
-		cout << 0;
 		curNode = curNode->getLeft();
 	} else {
-		cout << 1;
 		curNode = curNode->getRight();
 	}
 }

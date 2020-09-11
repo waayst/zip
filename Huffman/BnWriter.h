@@ -3,6 +3,11 @@
 #include <fstream>
 #include "HelpfulMethods.h"
 
+/*
+BnWriter writes characters in dfs of codes tree order,
+dfs code and compressed text in binary file.
+*/
+
 class BnWriter {
 public:
 	BnWriter();
@@ -22,13 +27,11 @@ private:
 	void writeCompressedText();
 
 	void writeString(std::string* stringPtr);
-	std::ofstream* filePtr;
+	std::ofstream* filePtr = nullptr;
 
-
-
-	std::string* charactersDfsOrderPtr;
-	std::string* dfsCodePtr;
+	std::string* charactersDfsOrderPtr = nullptr;
+	std::string* dfsCodePtr = nullptr;
 	std::uint32_t textSize;
-	std::string* compressedTextPtr;
+	std::string* compressedTextPtr = nullptr;
 };
 

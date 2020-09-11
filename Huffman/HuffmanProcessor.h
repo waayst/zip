@@ -4,6 +4,11 @@
 #include <list>
 #include "BNode.h"
 
+/*
+HuffmanProcessor processes Huffman algorithm,
+creating codes tree.
+*/
+
 class HuffmanProcessor {
 public:
 	HuffmanProcessor();
@@ -16,7 +21,7 @@ public:
 
 	void process();
 
-//private:
+private:
 	using latenciesListIterator = std::list<std::pair<BNode*, int>>::iterator;
 
 	void createLatenciesMap();

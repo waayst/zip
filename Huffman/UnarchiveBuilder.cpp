@@ -1,18 +1,19 @@
 #include "UnarchiveBuilder.h"
+#include <iostream>
 using namespace std;
 
-UnarchiveBuilder::UnarchiveBuilder() :
-	reader(nullptr), treeBuilder(nullptr),
-	decoder(nullptr), writer(nullptr) {}
+UnarchiveBuilder::UnarchiveBuilder()  {}
 
-UnarchiveBuilder::UnarchiveBuilder(string fileToDecompressName,
-	string fileDecompressedName)
-	: fileToDecompressName(fileToDecompressName),
-	fileDecompressedName(fileDecompressedName),
-	reader(nullptr), treeBuilder(nullptr),
-	decoder(nullptr), writer(nullptr)
-
+UnarchiveBuilder::UnarchiveBuilder(
+			      string fileToDecompressName,
+	              string fileDecompressedName)
+	             :fileToDecompressName(fileToDecompressName),
+	              fileDecompressedName(fileDecompressedName)
 {}
+
+bool UnarchiveBuilder::fileIsOpened() {
+	return reader->fileIsOpened();
+}
 
 bool UnarchiveBuilder::fileIsEmpty() {
 	return reader->fileIsEmpty();
@@ -20,8 +21,13 @@ bool UnarchiveBuilder::fileIsEmpty() {
 
 void UnarchiveBuilder::unarchivate() {
 	startReading();
-	if (reader->fileIsEmpty()) {
+	if (!fileIsOpened()) {
+		std::cout << "no such file to decompress";
+		return;
+	}
+	if (fileIsEmpty()) {
 		writeEmptyFile();
+		return;
 	}
 	buildTree();
 	decode();
@@ -41,7 +47,7 @@ void UnarchiveBuilder::buildTree() {
 	auto dfsCodePtr = reader->getBlockPtr();
 	safeDelete(treeBuilder);
 	treeBuilder = new TreeBuilder(charactersDfsOrderPtr, dfsCodePtr);
-	treeBuilder->createTree();
+	treeBuilder->buildTree();
 }
 
 void UnarchiveBuilder::decode() {

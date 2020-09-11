@@ -1,21 +1,17 @@
 #include "BnWriter.h"
-
+#include "HelpfulMethods.h"
 using namespace std;
 
-BnWriter::BnWriter(): filePtr(nullptr),
-charactersDfsOrderPtr(nullptr),
-dfsCodePtr(nullptr),
-compressedTextPtr(nullptr) {}
+BnWriter::BnWriter() {}
 
-BnWriter::BnWriter(std::string* charactersDfsOrderPtr,
-	std::string* dfsCodePtr,
-	std::uint32_t textSize,
-	std::string* compressedTextPtr) :
-	filePtr(nullptr),
-	charactersDfsOrderPtr(charactersDfsOrderPtr),
-	dfsCodePtr(dfsCodePtr),
-	textSize(textSize),
-	compressedTextPtr(compressedTextPtr) {}
+BnWriter::BnWriter(string* charactersDfsOrderPtr,
+	      string* dfsCodePtr,
+		  uint32_t textSize,
+	      string* compressedTextPtr)
+	     :charactersDfsOrderPtr(charactersDfsOrderPtr), 
+	      dfsCodePtr(dfsCodePtr),
+	      textSize(textSize),
+	      compressedTextPtr(compressedTextPtr) {}
 
 void BnWriter::write(string filename) {
 	safeDelete(filePtr);

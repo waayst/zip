@@ -58,12 +58,9 @@ TreeBuilder::~TreeBuilder() {
 		 //cout << '1';
 		 dfsTree(node->getRight());
 	 }
-	 if (node->isALeaf()) {
-		 std::cout << node->getCharacter();
-	 }
  }
 
-void TreeBuilder::createTree() {
+void TreeBuilder::buildTree() {
 	auto& dfsRef = *dfsCodePtr;
 	auto& charactersRef = *charactersDfsOrderPtr;
 	leaf = 0;
@@ -76,7 +73,6 @@ void TreeBuilder::createTree() {
 		doStep(curNode);
 	}
 	curNode->setCharacter(charactersRef[leaf]);
-
-	dfsTree(codesTree);
+	//dfsTree(codesTree);
 }
 

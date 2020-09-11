@@ -2,6 +2,11 @@
 #include <fstream>
 #include "HelpfulMethods.h"
 #pragma once
+
+/*
+TextWriter writes the whole buffer(textPtr) to binary file
+*/
+
 class TextWriter {
 public:
 	TextWriter();
@@ -12,5 +17,5 @@ public:
 
 	~TextWriter();
 private:
-	std::string* textPtr;
+	std::string* textPtr = nullptr;
 };

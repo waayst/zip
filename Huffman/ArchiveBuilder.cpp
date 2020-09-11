@@ -1,26 +1,34 @@
 #include "ArchiveBuilder.h"
+using namespace std;
 
-ArchiveBuilder::ArchiveBuilder(): reader(nullptr),
-				processor(nullptr), compressor(nullptr),
-				writer(nullptr)
-{}
+ArchiveBuilder::ArchiveBuilder() {}
 
 ArchiveBuilder::ArchiveBuilder(std::string fileToCompressName,
-	std::string fileCompressedName) : fileToCompressName(fileToCompressName),
-	fileCompressedName(fileCompressedName),
-	reader(nullptr), processor(nullptr),
-	compressor(nullptr), writer(nullptr)
-{}
+				std::string fileCompressedName)
+			   :fileToCompressName(fileToCompressName),
+				fileCompressedName(fileCompressedName) {}
 
 void ArchiveBuilder::archivate() {
 	read();
-	if (reader->fileIsEmpty()) {
+	if (!fileIsOpened()) {
+		cerr << "can't open file " << fileToCompressName << endl;
+		return;
+	}
+	if (fileIsEmpty()) {
 		writeEmptyFile();
 		return;
 	}
 	process();
 	compress();
 	write();
+}
+
+bool ArchiveBuilder::fileIsOpened() {
+	return reader->fileIsOpened();
+}
+
+bool ArchiveBuilder::fileIsEmpty() {
+	return reader->fileIsEmpty();
 }
 
 void ArchiveBuilder::read() {
@@ -44,10 +52,10 @@ void ArchiveBuilder::compress() {
 
 void ArchiveBuilder::write() {
 	safeDelete(writer);
-	writer = new BnWriter  (compressor->getCharactersDfsOrderPtr(),
-							compressor->getDfsCodePtr(),
-							reader->getTextPtr()->size(),
-							compressor->getCompressedTextPtr());
+	writer = new BnWriter(compressor->getCharactersDfsOrderPtr(),
+						  compressor->getDfsCodePtr(),
+						  reader->getTextPtr()->size(),
+						  compressor->getCompressedTextPtr());
 	writer->write(fileCompressedName);
 }
 

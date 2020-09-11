@@ -1,7 +1,11 @@
 #pragma once
-#include "BNode.h"
 #include <iostream>
+#include "BNode.h"
 #include "HelpfulMethods.h"
+
+/*
+Decoder decodes compressed text using built codes tree, and knowing text size. 
+*/
 
 class Decoder {
 public:
@@ -10,9 +14,11 @@ public:
 		    std::string* compressedTextPtr, BNode* codesTree);
 	
 	std::string* getTextPtr();
+	
 	void decode();
+
 	~Decoder();
-//private:
+private:
 
 	char getCode();
 	void moveNode(char bit);
@@ -20,9 +26,9 @@ public:
 	int offset;
 
 	std::uint32_t textSize;
-	std::string* compressedTextPtr;
-	std::string* textPtr;
-	BNode* codesTree;	
-	BNode* curNode;
+	std::string* compressedTextPtr = nullptr;
+	std::string* textPtr = nullptr;
+	BNode* codesTree = nullptr;	
+	BNode* curNode = nullptr;
 };
 

@@ -1,2 +1,9 @@
-﻿  main.cpp
+﻿  ArchiveBuilder.cpp
+  BnReader.cpp
+  TextWriter.cpp
+  TreeBuilder.cpp
+d:\code\c++\huffman vs\huffman\huffman\treebuilder.cpp(71): warning C4018: '<': signed/unsigned mismatch
+  UnarchiveBuilder.cpp
+  main.cpp
+  Generating Code...
   Huffman.vcxproj -> D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe

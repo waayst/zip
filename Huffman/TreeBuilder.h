@@ -2,6 +2,10 @@
 #include <iostream>
 #include "BNode.h"
 
+/*
+TreeBuilder buildes codes tree from
+characters is dfs order and dfs Code.
+*/
 class TreeBuilder {
 public:
 	TreeBuilder();
@@ -11,7 +15,7 @@ public:
 	void setCharactersDfsOrderPtr(std::string* newCharacterDfsOrderPtr);
 	void setDfsCodePtr(std::string* newDfsCodePtr);
 
-	void createTree();
+	void buildTree();
 	BNode* getCodesTree();
 	~TreeBuilder();
 

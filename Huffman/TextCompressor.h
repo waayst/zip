@@ -3,6 +3,11 @@
 #include <iostream>
 #include <map>
 
+/*
+TextCompressor compresses text using codes tree,
+also storaging noncompressed text size.
+*/
+
 class TextCompressor {
 public:
 	TextCompressor();
@@ -16,7 +21,7 @@ public:
 
 	void compress();
 	~TextCompressor();
-//private:
+private:
 	void createDfsInfo();
 	void createCompressedText();
 

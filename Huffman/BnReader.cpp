@@ -1,19 +1,26 @@
 #include "BnReader.h"
 using namespace std;
 
-BnReader::BnReader(): blockPtr(nullptr),
-					  filePtr(nullptr),
-					  fileEmptiness(true) {}
+BnReader::BnReader() {}
 
 string* BnReader::getBlockPtr() {
 	return blockPtr;
 }
 
+
+bool BnReader::fileIsOpened() {
+	return fileOpen;
+}
+
 void BnReader::startReading(std::string filename) {
 	safeDelete(filePtr);
 	filePtr = new ifstream(filename, ios::binary | ios::in);
-	if (filePtr->peek() != EOF) {
+	if (!filePtr->is_open()) {
+		fileOpen = false;
+		return;
+	} else if (filePtr->peek() != EOF) {
 		fileEmptiness = false;
+		return;
 	}
 }
 
