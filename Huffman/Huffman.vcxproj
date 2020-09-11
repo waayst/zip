@@ -155,11 +155,12 @@
     <ClCompile Include="BNode.cpp" />
     <ClCompile Include="BnReader.cpp" />
     <ClCompile Include="BnWriter.cpp" />
+    <ClCompile Include="Decoder.cpp" />
     <ClCompile Include="HuffmanProcessor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TextCompressor.cpp" />
     <ClCompile Include="TextReader.cpp" />
-    <ClCompile Include="TextWriter.cpp" />
+    <ClCompile Include="TreeBuilder.cpp" />
     <ClCompile Include="UnarchiveBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,11 +168,12 @@
     <ClInclude Include="BNode.h" />
     <ClInclude Include="BnReader.h" />
     <ClInclude Include="BnWriter.h" />
+    <ClInclude Include="Decoder.h" />
     <ClInclude Include="HelpfulMethods.h" />
     <ClInclude Include="HuffmanProcessor.h" />
     <ClInclude Include="TextCompressor.h" />
     <ClInclude Include="TextReader.h" />
-    <ClInclude Include="TextWriter.h" />
+    <ClInclude Include="TreeBuilder.h" />
     <ClInclude Include="UnarchiveBuilder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

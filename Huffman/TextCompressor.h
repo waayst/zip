@@ -21,7 +21,7 @@ public:
 	void createCompressedText();
 
 	void dfsTree(BNode* node, std::string curCode);
-	void writeCompressed(char bit);
+	void writeCompressed(unsigned char bit);
 	void writeCompressed(std::string code);
 	int byteNumber;
 	int byteOffset;

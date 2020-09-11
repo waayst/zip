@@ -24,10 +24,17 @@ bool BnReader::fileIsEmpty() {
 void BnReader::readBlock() {
 	uint32_t bytesAmount;
 	filePtr->read((char*)&bytesAmount, sizeof(bytesAmount));
-	safeDelete(blockPtr);
 	blockPtr = new string(bytesAmount, '0');
 	char* ptr = &((*blockPtr)[0]);
 	filePtr->read(ptr, bytesAmount);
+}
+
+void BnReader::readTextSize() {
+	filePtr->read((char*)&textSize, sizeof(textSize));
+}
+
+uint32_t BnReader::getTextSize() {
+	return textSize;
 }
 
 BnReader::~BnReader() {

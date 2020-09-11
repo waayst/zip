@@ -37,7 +37,7 @@ void ArchiveBuilder::process() {
 
 void ArchiveBuilder::compress() {
 	safeDelete(compressor);
-	compressor = new TextCompressor(processor->getTextPtr(),
+	compressor = new TextCompressor(reader->getTextPtr(),
 									processor->getCodesTree());
 	compressor->compress();
 }
@@ -46,6 +46,7 @@ void ArchiveBuilder::write() {
 	safeDelete(writer);
 	writer = new BnWriter  (compressor->getCharactersDfsOrderPtr(),
 							compressor->getDfsCodePtr(),
+							reader->getTextPtr()->size(),
 							compressor->getCompressedTextPtr());
 	writer->write(fileCompressedName);
 }

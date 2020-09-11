@@ -45,7 +45,8 @@ void TextCompressor::createDfsInfo() {
 	dfsTree(codesTree, "");
 }
 
-void TextCompressor::writeCompressed(char bit) {
+void TextCompressor::writeCompressed(unsigned char bit) {
+	std::cout << (int)bit;
 	string& compressedTextRef = *compressedTextPtr;
 	bit *= 128;
 	char discharge = (bit >> byteOffset); //??????????????????
@@ -60,8 +61,8 @@ void TextCompressor::writeCompressed(char bit) {
 }
 
 void TextCompressor::writeCompressed(string code) {
-	for (char &bit : code) {
-		writeCompressed(bit);
+	for (char &charCode : code) {
+		writeCompressed(charCode - 48);
 	}
 }
 

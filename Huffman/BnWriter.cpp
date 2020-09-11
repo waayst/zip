@@ -9,10 +9,12 @@ compressedTextPtr(nullptr) {}
 
 BnWriter::BnWriter(std::string* charactersDfsOrderPtr,
 	std::string* dfsCodePtr,
+	std::uint32_t textSize,
 	std::string* compressedTextPtr) :
 	filePtr(nullptr),
 	charactersDfsOrderPtr(charactersDfsOrderPtr),
 	dfsCodePtr(dfsCodePtr),
+	textSize(textSize),
 	compressedTextPtr(compressedTextPtr) {}
 
 void BnWriter::write(string filename) {
@@ -20,6 +22,7 @@ void BnWriter::write(string filename) {
 	filePtr = new ofstream(filename, ios::binary | ios::out);
 	writeCharacters();
 	writeDfsCode();
+	writeTextSize();
 	writeCompressedText();
 	safeDelete(filePtr);
 }
@@ -30,10 +33,15 @@ void BnWriter::writeEmptyFile(string filename) {
 	safeDelete(filePtr);
 }
 
+void BnWriter::writeTextSize() {
+	filePtr->write((char*)&textSize, sizeof(textSize));
+}
+
+
 void BnWriter::writeString(std::string* stringPtr) {
 	uint32_t bytesAmount = stringPtr->size();
 	filePtr->write((char*)&bytesAmount, sizeof(bytesAmount));
-	char* ptr = &((*charactersDfsOrderPtr)[0]);
+	char* ptr = &((*stringPtr)[0]);
 	filePtr->write(ptr, bytesAmount);
 }
 

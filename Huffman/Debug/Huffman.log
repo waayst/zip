@@ -1,2 +1,5 @@
 ﻿  ArchiveBuilder.cpp
+  TextCompressor.cpp
+  main.cpp
+  Generating Code...
   Huffman.vcxproj -> D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe

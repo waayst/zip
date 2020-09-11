@@ -8,6 +8,7 @@ public:
 	BnWriter();
 	BnWriter(std::string* charactersDfsOrderPtr,
 		std::string* compressedTreePtr,
+		std::uint32_t textSize,
 		std::string* compressedTextPtr);
 
 	void write(std::string filename);
@@ -17,13 +18,17 @@ public:
 private:
 	void writeCharacters();
 	void writeDfsCode();
+	void writeTextSize();
 	void writeCompressedText();
 
 	void writeString(std::string* stringPtr);
 	std::ofstream* filePtr;
 
+
+
 	std::string* charactersDfsOrderPtr;
 	std::string* dfsCodePtr;
+	std::uint32_t textSize;
 	std::string* compressedTextPtr;
 };
 
