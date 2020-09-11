@@ -160,6 +160,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TextCompressor.cpp" />
     <ClCompile Include="TextReader.cpp" />
+    <ClCompile Include="TextWriter.cpp" />
     <ClCompile Include="TreeBuilder.cpp" />
     <ClCompile Include="UnarchiveBuilder.cpp" />
   </ItemGroup>
@@ -173,6 +174,7 @@
     <ClInclude Include="HuffmanProcessor.h" />
     <ClInclude Include="TextCompressor.h" />
     <ClInclude Include="TextReader.h" />
+    <ClInclude Include="TextWriter.h" />
     <ClInclude Include="TreeBuilder.h" />
     <ClInclude Include="UnarchiveBuilder.h" />
   </ItemGroup>

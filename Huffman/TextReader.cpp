@@ -4,18 +4,13 @@ using namespace std;
 TextReader::TextReader() :textPtr(nullptr) {}
 
 void TextReader::read(std::string filename) {
-	ifstream file(filename);
+	ifstream file(filename, ios::binary | ios::in);
 	textPtr = new string{};
 	string s;
-	if (file.is_open()) {
-		int step = 0;
-		while (getline(file, s)) {
-			if (step > 0) {
-				*textPtr += '\n';
-			}
-			*textPtr += (s);
-			step++;
-		}
+	char character;
+	while (!file.eof()) {
+		file.read(&character, sizeof character);
+		textPtr->push_back(character);
 	}
 }
 
