@@ -2,7 +2,7 @@
 #include "CompressedFileReader.h"
 #include "TreeBuilder.h"
 #include "Decoder.h"
-#include "DecompressedWriter.h"
+#include "DecompressedDataWriter.h"
 
 /*
 UnarchiveBuilder unzips binary file, reading info from it
@@ -22,7 +22,7 @@ private:
 	bool fileIsOpened();
 	bool fileIsEmpty();
 
-	void startReading();
+	void openFile();
 	void buildTree();
 	void decode();
 	void write();
@@ -30,7 +30,7 @@ private:
 	CompressedFileReader* reader = nullptr;
 	TreeBuilder* treeBuilder = nullptr;
 	Decoder* decoder = nullptr;
-	DecompressedWriter* writer = nullptr;
+	DecompressedDataWriter* writer = nullptr;
 
 	std::string fileToDecompressName;
 	std::string fileDecompressedName;

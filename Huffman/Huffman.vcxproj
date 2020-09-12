@@ -154,14 +154,15 @@
     <ClCompile Include="ArchiveBuilder.cpp" />
     <ClCompile Include="BNode.cpp" />
     <ClCompile Include="CompressedFileReader.cpp" />
-    <ClCompile Include="CompressedWriter.cpp" />
+    <ClCompile Include="CompressedDataWriter.cpp" />
     <ClCompile Include="Decoder.cpp" />
     <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="HuffmanProcessor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Compressor.cpp" />
     <ClCompile Include="FileToCompressReader.cpp" />
-    <ClCompile Include="DecompressedWriter.cpp" />
+    <ClCompile Include="DecompressedDataWriter.cpp" />
     <ClCompile Include="TreeBuilder.cpp" />
     <ClCompile Include="UnarchiveBuilder.cpp" />
   </ItemGroup>
@@ -169,14 +170,15 @@
     <ClInclude Include="ArchiveBuilder.h" />
     <ClInclude Include="BNode.h" />
     <ClInclude Include="CompressedFileReader.h" />
-    <ClInclude Include="CompressedWriter.h" />
+    <ClInclude Include="CompressedDataWriter.h" />
     <ClInclude Include="Decoder.h" />
     <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="HelpfulMethods.h" />
     <ClInclude Include="HuffmanProcessor.h" />
     <ClInclude Include="Compressor.h" />
     <ClInclude Include="FileToCompressReader.h" />
-    <ClInclude Include="DecompressedWriter.h" />
+    <ClInclude Include="DecompressedDataWriter.h" />
     <ClInclude Include="TreeBuilder.h" />
     <ClInclude Include="UnarchiveBuilder.h" />
   </ItemGroup>

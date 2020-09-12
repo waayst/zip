@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "FileReader.h"
 #include "HelpfulMethods.h"
 
 /* 
@@ -11,7 +12,7 @@ TextReader - class reads whole file in one go to textPtr,
 TextReader and BnReader will be rewritten having common base.
 */
 
-class FileToCompressReader {
+class FileToCompressReader : public FileReader {
 public:
 	FileToCompressReader();
 
@@ -19,12 +20,8 @@ public:
 	~FileToCompressReader();
 
 	std::string* getTextPtr();
-	bool fileIsOpened();
-	bool fileIsEmpty();
 
 private:
 	std::string* textPtr = nullptr;
-	bool isOpened = true;
-	bool isEmpty = false;
 };
 

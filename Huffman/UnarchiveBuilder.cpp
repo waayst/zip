@@ -20,24 +20,22 @@ bool UnarchiveBuilder::fileIsEmpty() {
 }
 
 void UnarchiveBuilder::unarchivate() {
-	startReading();
-	if (!fileIsOpened()) {
-		std::cout << "no such file to decompress";
-		return;
+	openFile();
+	if (reader->fileIsOpened()) {
+		if (reader->fileIsEmpty()) {
+			writeEmptyFile();
+		} else {
+			buildTree();
+			decode();
+			write();
+		}
 	}
-	if (fileIsEmpty()) {
-		writeEmptyFile();
-		return;
-	}
-	buildTree();
-	decode();
-	write();
 }
 
-void UnarchiveBuilder::startReading() {
+void UnarchiveBuilder::openFile() {
 	safeDelete(reader);
 	reader = new CompressedFileReader();
-	reader->startReading(fileToDecompressName);
+	reader->openBinaryFile(fileToDecompressName);
 }
 
 void UnarchiveBuilder::buildTree() {
@@ -63,14 +61,24 @@ void UnarchiveBuilder::decode() {
 
 void UnarchiveBuilder::write() {
 	safeDelete(writer);
-	writer = new DecompressedWriter(decoder->getTextPtr());
-	writer->write(fileDecompressedName);
+	writer = new DecompressedDataWriter(decoder->getTextPtr());
+	writer->openBinaryFile(fileDecompressedName);
+	if (writer->fileIsOpened()) {
+		writer->write();
+	} else {
+		std::cerr << "can't open file to write";
+	}
 }
 
 void UnarchiveBuilder::writeEmptyFile() {
 	safeDelete(writer);
-	writer = new DecompressedWriter;
-	writer->writeEmptyFile(fileDecompressedName);
+	writer = new DecompressedDataWriter;
+	writer->openBinaryFile(fileDecompressedName);
+	if (writer->fileIsOpened()) {
+		writer->writeEmptyFile();
+	} else {
+		std::cerr << "can't open file to write";
+	}
 }
 
 UnarchiveBuilder::~UnarchiveBuilder() {

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-#include <fstream>
+#include "FileReader.h"
 #include "HelpfulMethods.h"
 
 /* 
@@ -10,24 +10,18 @@ BnReader reads file in blocks, according to Compressor compressed them and BnWri
 TextReader and BnReader will be rewritten having commom base.
 */
 
-class CompressedFileReader {
+class CompressedFileReader : public FileReader {
 public:
 	CompressedFileReader();
-	~CompressedFileReader();
 
-	void startReading(std::string filename);
 	void readBlock();
 	void readTextSize();
 
 	std::string* getBlockPtr();
 	std::uint32_t getTextSize();
-	bool fileIsOpened();
-	bool fileIsEmpty();
+
 private:
 	std::string* blockPtr = nullptr;
 	std::uint32_t textSize;
-	std::ifstream* filePtr = nullptr;
-	bool isOpened = true;
-	bool isEmpty = false;
 };
 

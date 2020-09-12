@@ -13,87 +13,117 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\BaseClasses">
+      <UniqueIdentifier>{cf1dcd62-24b7-43bb-b681-e0311b27e9bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Auxillary">
+      <UniqueIdentifier>{44f6233c-14ec-43c1-8fdd-188b279cbf96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BaseClasses">
+      <UniqueIdentifier>{41a7a27e-2c9e-4db5-b2e7-3b5d871ac394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Auxillary">
+      <UniqueIdentifier>{cab608db-5dc6-4823-a445-ade91c35b232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Archiver">
+      <UniqueIdentifier>{562e2fbf-76a0-4b6c-b739-5be356433378}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unacrhiver">
+      <UniqueIdentifier>{abcecae4-b467-416c-9086-e613ef05ee88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unarchiver">
+      <UniqueIdentifier>{4f0ddd94-6cf8-4920-9822-104ce856e752}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Archiver">
+      <UniqueIdentifier>{5dbd70ae-93bb-405f-bdc1-37fda6144e3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BNode.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HuffmanProcessor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ArchiveBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnarchiveBuilder.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
-    <ClCompile Include="TreeBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Decoder.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BNode.cpp">
+      <Filter>Source Files\Auxillary</Filter>
     </ClCompile>
     <ClCompile Include="CompressedFileReader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Unarchiver</Filter>
     </ClCompile>
-    <ClCompile Include="FileToCompressReader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Decoder.cpp">
+      <Filter>Source Files\Unarchiver</Filter>
     </ClCompile>
-    <ClCompile Include="CompressedWriter.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="TreeBuilder.cpp">
+      <Filter>Source Files\Unarchiver</Filter>
     </ClCompile>
-    <ClCompile Include="DecompressedWriter.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="UnarchiveBuilder.cpp">
+      <Filter>Source Files\Unarchiver</Filter>
+    </ClCompile>
+    <ClCompile Include="ArchiveBuilder.cpp">
+      <Filter>Source Files\Archiver</Filter>
     </ClCompile>
     <ClCompile Include="Compressor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Archiver</Filter>
     </ClCompile>
-    <ClCompile Include="FileReader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="FileToCompressReader.cpp">
+      <Filter>Source Files\Archiver</Filter>
+    </ClCompile>
+    <ClCompile Include="HuffmanProcessor.cpp">
+      <Filter>Source Files\Archiver</Filter>
+    </ClCompile>
+    <ClCompile Include="FileWriter.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="CompressedDataWriter.cpp">
+      <Filter>Source Files\Archiver</Filter>
+    </ClCompile>
+    <ClCompile Include="DecompressedDataWriter.cpp">
+      <Filter>Source Files\Unarchiver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BNode.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="FileReader.h">
+      <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
-    <ClInclude Include="HuffmanProcessor.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BNode.h">
+      <Filter>Header Files\Auxillary</Filter>
     </ClInclude>
     <ClInclude Include="HelpfulMethods.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Auxillary</Filter>
     </ClInclude>
     <ClInclude Include="ArchiveBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UnarchiveBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TreeBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Decoder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CompressedFileReader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Archiver</Filter>
     </ClInclude>
     <ClInclude Include="FileToCompressReader.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Archiver</Filter>
     </ClInclude>
-    <ClInclude Include="CompressedWriter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DecompressedWriter.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="HuffmanProcessor.h">
+      <Filter>Header Files\Archiver</Filter>
     </ClInclude>
     <ClInclude Include="Compressor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Archiver</Filter>
     </ClInclude>
-    <ClInclude Include="FileReader.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CompressedFileReader.h">
+      <Filter>Header Files\Unacrhiver</Filter>
+    </ClInclude>
+    <ClInclude Include="Decoder.h">
+      <Filter>Header Files\Unacrhiver</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeBuilder.h">
+      <Filter>Header Files\Unacrhiver</Filter>
+    </ClInclude>
+    <ClInclude Include="UnarchiveBuilder.h">
+      <Filter>Header Files\Unacrhiver</Filter>
+    </ClInclude>
+    <ClInclude Include="FileWriter.h">
+      <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="CompressedDataWriter.h">
+      <Filter>Header Files\Archiver</Filter>
+    </ClInclude>
+    <ClInclude Include="DecompressedDataWriter.h">
+      <Filter>Header Files\Unacrhiver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

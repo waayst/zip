@@ -3,7 +3,7 @@
 #include "FileToCompressReader.h"
 #include "HuffmanProcessor.h"
 #include "Compressor.h"
-#include "CompressedWriter.h"
+#include "CompressedDataWriter.h"
 
 /*
 ArchieveBuilder - class that zips some file(fileToCompressName),
@@ -25,6 +25,7 @@ private:
 	bool fileIsOpened();
 	bool fileIsEmpty();
 
+	void openFile();
 	void read();
 	void process();
 	void compress();
@@ -34,7 +35,7 @@ private:
 	FileToCompressReader* reader = nullptr;
 	HuffmanProcessor* processor = nullptr;
 	Compressor* compressor = nullptr;
-	CompressedWriter* writer = nullptr;
+	CompressedDataWriter* writer = nullptr;
 
 	std::string fileToCompressName;
 	std::string fileCompressedName;
