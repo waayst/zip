@@ -10,8 +10,8 @@ and saves result.
 class Decoder {
 public:
 	Decoder();
-	Decoder(std::uint32_t textSize,
-		    std::string* compressedTextPtr, BNode* codesTree);
+	Decoder      (std::uint32_t textSize,
+		          std::string* compressedTextPtr, BNode* codesTree);
 	~Decoder();
 
 	void decode();

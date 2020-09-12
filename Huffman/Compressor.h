@@ -17,8 +17,8 @@ public:
 
 	void compress();
 
-	void setCodesTree(BNode* newCodesTree);
-	void setTextPtr(std::string* newTextPtr);
+	void setCodesTree   (BNode* newCodesTree);
+	void setTextPtr     (std::string* newTextPtr);
 
 	std::string* getCharactersDfsOrderPtr();
 	std::string* getDfsCodePtr();

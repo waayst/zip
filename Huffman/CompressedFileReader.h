@@ -20,7 +20,7 @@ public:
 
 private:
 	void readBlock();
-	void readTextSize();
+	void readSize();
 
 	std::string* blockPtr = nullptr;
 	std::uint32_t textSize;

@@ -9,7 +9,7 @@ string* CompressedFileReader::readAndGetBlockPtr() {
 }
 
 uint32_t CompressedFileReader::readAndGetTextSize() {
-	readTextSize();
+	readSize();
 	return getTextSize();
 }
 
@@ -22,12 +22,12 @@ uint32_t CompressedFileReader::getTextSize() {
 }
 
 void CompressedFileReader::readBlock() {
-	readTextSize();
+	readSize();
 	blockPtr = new string(textSize, '0');
 	char* ptr = &((*blockPtr)[0]);
 	filePtr->read(ptr, textSize);
 }
 
-void CompressedFileReader::readTextSize() {
+void CompressedFileReader::readSize() {
 	filePtr->read((char*)&textSize, sizeof(textSize));
 }

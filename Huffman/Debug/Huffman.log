@@ -1,4 +1,13 @@
-﻿  FileToCompressReader.cpp
+﻿  ArchiveBuilder.cpp
+  BNode.cpp
+  CompressedFileReader.cpp
+  Compressor.cpp
+  Decoder.cpp
+d:\code\c++\huffman vs\huffman\huffman\decoder.cpp(47): warning C4018: '<': signed/unsigned mismatch
+  HuffmanProcessor.cpp
+  TreeBuilder.cpp
+d:\code\c++\huffman vs\huffman\huffman\treebuilder.cpp(28): warning C4018: '<': signed/unsigned mismatch
+  UnarchiveBuilder.cpp
   main.cpp
   Generating Code...
   Huffman.vcxproj -> D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe

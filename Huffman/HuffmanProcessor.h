@@ -14,7 +14,7 @@ public:
 	HuffmanProcessor(std::string* textPtr);
 	~HuffmanProcessor();
 
-	void setText(std::string* newTextPtr);
+	void setText    (std::string* newTextPtr);
 	std::string* getTextPtr();
 	BNode* getCodesTree();
 
