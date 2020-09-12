@@ -3,10 +3,9 @@
 #include <map>
 #include <list>
 #include "BNode.h"
-
 /*
-HuffmanProcessor processes Huffman algorithm,
-creating codes tree.
+HuffmanProcessor gets text and 
+processes Huffman algorithm, creating codes tree.
 */
 
 class HuffmanProcessor {

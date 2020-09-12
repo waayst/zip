@@ -14,45 +14,37 @@ CompressedDataWriter::CompressedDataWriter(
 	              textSize(textSize),
 	              compressedTextPtr(compressedTextPtr) {}
 
-void CompressedDataWriter::write(string filename) {
-	safeDelete(filePtr);
-	filePtr = new ofstream(filename, ios::binary | ios::out);
+CompressedDataWriter::~CompressedDataWriter() {}
+
+void CompressedDataWriter::write() {
 	writeCharacters();
 	writeDfsCode();
 	writeTextSize();
 	writeCompressedText();
-	safeDelete(filePtr);
-}
-
-void CompressedDataWriter::writeEmptyFile(string filename) {
-	safeDelete(filePtr);
-	filePtr = new ofstream(filename, ios::binary | ios::out);
-	safeDelete(filePtr);
-}
-
-void CompressedDataWriter::writeTextSize() {
-	filePtr->write((char*)&textSize, sizeof(textSize));
-}
-
-void CompressedDataWriter::writeString(std::string* stringPtr) {
-	uint32_t bytesAmount = stringPtr->size();
-	filePtr->write((char*)&bytesAmount, sizeof(bytesAmount));
-	char* ptr = &((*stringPtr)[0]);
-	filePtr->write(ptr, bytesAmount);
+	filePtr->close();
 }
 
 void CompressedDataWriter::writeCharacters() {
-	writeString(charactersDfsOrderPtr);
+	writeBlock(charactersDfsOrderPtr);
 }
 
 void CompressedDataWriter::writeDfsCode() {
-	writeString(dfsCodePtr);
+	writeBlock(dfsCodePtr);
+}
+
+void CompressedDataWriter::writeTextSize() {
+	writeSize(textSize);
 }
 
 void CompressedDataWriter::writeCompressedText() {
-	writeString(compressedTextPtr);
+	writeBlock(compressedTextPtr);
 }
 
-CompressedDataWriter::~CompressedDataWriter() {
-	safeDelete(filePtr);
+void CompressedDataWriter::writeBlock(std::string* stringPtr) {
+	writeSize(stringPtr->size());
+	writeString(stringPtr);
+}
+
+void CompressedDataWriter::writeSize(uint32_t size) {
+	filePtr->write((char*)&size, sizeof(size));
 }

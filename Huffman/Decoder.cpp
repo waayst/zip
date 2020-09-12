@@ -1,4 +1,5 @@
 #include "Decoder.h"
+#include "HelpfulMethods.h"
 using namespace std;
 
 Decoder::Decoder() {}

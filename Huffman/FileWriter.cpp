@@ -14,16 +14,16 @@ void FileWriter::openBinaryFile(std::string filename) {
 	isOpened = filePtr->is_open();
 }
 
-void FileWriter::writeString(std::string* stringPtr) {
-	uint32_t bytesAmount = stringPtr->size();
-	char* ptr = &((*stringPtr)[0]);
-	filePtr->write(ptr, bytesAmount);
-}
-
 void FileWriter::writeEmptyFile() {
 	filePtr->close();
 }
 
 bool FileWriter::fileIsOpened() const {
 	return isOpened;
+}
+
+void FileWriter::writeString(std::string* stringPtr) {
+	uint32_t bytesAmount = stringPtr->size();
+	char* ptr = &((*stringPtr)[0]);
+	filePtr->write(ptr, bytesAmount);
 }

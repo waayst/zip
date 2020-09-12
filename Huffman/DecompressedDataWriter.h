@@ -3,9 +3,8 @@
 #include "FileWriter.h"
 #include "HelpfulMethods.h"
 #pragma once
-
 /*
-TextWriter writes the whole buffer(textPtr) to binary file
+DecompressedDataWriter writes whole decompressed data to file in one go.
 */
 
 class DecompressedDataWriter : public FileWriter {
@@ -13,9 +12,10 @@ public:
 	DecompressedDataWriter();
 	DecompressedDataWriter(std::string* textPtr);
 
+	~DecompressedDataWriter();
+
 	void write();
 
-	~DecompressedDataWriter();
 private:
 	std::string* textPtr = nullptr;
 };

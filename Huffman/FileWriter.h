@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-#include "HelpfulMethods.h"
+/*
+FileWriter is a base class for CompressedDataWriter and DecompressedDataWriter
+*/
 
 class FileWriter {
 public:
@@ -20,4 +22,3 @@ protected:
 	bool isOpened;
 	std::ofstream* filePtr = nullptr;
 };
-

@@ -1,19 +1,21 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-#include "HelpfulMethods.h"
+/*
+FileReader is a base class of CompressedFileReader and FileToCompressReader
+*/
 
 class FileReader {
 public:
 	FileReader();
+	~FileReader();
+
 	void openBinaryFile(std::string filename);
 	bool fileIsOpened() const;
 	bool fileIsEmpty() const;
 
 protected:
 	std::ifstream* filePtr = nullptr;
-	bool isOpened = true;
-	bool isEmpty = false;
-	~FileReader();
+	bool isOpened;
+	bool isEmpty;
 };
-

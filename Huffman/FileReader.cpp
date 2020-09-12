@@ -1,4 +1,5 @@
 #include "FileReader.h"
+#include "HelpfulMethods.h"
 using namespace std;
 
 FileReader::FileReader() {}

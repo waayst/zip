@@ -1,4 +1,5 @@
 #include "HuffmanProcessor.h"
+#include "HelpfulMethods.h"
 using namespace std;
 
 HuffmanProcessor::HuffmanProcessor():

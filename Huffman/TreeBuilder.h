@@ -1,23 +1,23 @@
 #pragma once
 #include <iostream>
 #include "BNode.h"
-
 /*
-TreeBuilder buildes codes tree from
-characters is dfs order and dfs Code.
+TreeBuilder gets characters is dfs order and dfs Code
+buildes codes tree from them.
 */
+
 class TreeBuilder {
 public:
 	TreeBuilder();
 	TreeBuilder(std::string* charactersDfsOrderPtr,
 				std::string* dfsCodePtr);
+	~TreeBuilder();
+
+	void buildTree();
 
 	void setCharactersDfsOrderPtr(std::string* newCharacterDfsOrderPtr);
 	void setDfsCodePtr(std::string* newDfsCodePtr);
-
-	void buildTree();
 	BNode* getCodesTree();
-	~TreeBuilder();
 
 private:
 
@@ -30,4 +30,3 @@ private:
 	std::string* charactersDfsOrderPtr;
 	std::string* dfsCodePtr;
 };
-

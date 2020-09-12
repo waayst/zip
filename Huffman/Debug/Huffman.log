@@ -1,2 +1,3 @@
-﻿  UnarchiveBuilder.cpp
+﻿  Decoder.cpp
+d:\code\c++\huffman vs\huffman\huffman\decoder.cpp(47): warning C4018: '<': signed/unsigned mismatch
   Huffman.vcxproj -> D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe

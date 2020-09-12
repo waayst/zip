@@ -1,5 +1,6 @@
-#include "UnarchiveBuilder.h"
 #include <iostream>
+#include "UnarchiveBuilder.h"
+#include "HelpfulMethods.h"
 using namespace std;
 
 UnarchiveBuilder::UnarchiveBuilder()  {}
@@ -11,12 +12,11 @@ UnarchiveBuilder::UnarchiveBuilder(
 	              fileDecompressedName(fileDecompressedName)
 {}
 
-bool UnarchiveBuilder::fileIsOpened() {
-	return reader->fileIsOpened();
-}
-
-bool UnarchiveBuilder::fileIsEmpty() {
-	return reader->fileIsEmpty();
+UnarchiveBuilder::~UnarchiveBuilder() {
+	safeDelete(reader);
+	safeDelete(treeBuilder);
+	safeDelete(decoder);
+	safeDelete(writer);
 }
 
 void UnarchiveBuilder::unarchivate() {
@@ -39,20 +39,16 @@ void UnarchiveBuilder::openFile() {
 }
 
 void UnarchiveBuilder::buildTree() {
-	reader->readBlock();
-	auto charactersDfsOrderPtr = reader->getBlockPtr();
-	reader->readBlock();
-	auto dfsCodePtr = reader->getBlockPtr();
+	auto charactersDfsOrderPtr = reader->readAndGetBlockPtr();
+	auto dfsCodePtr = reader->readAndGetBlockPtr();
 	safeDelete(treeBuilder);
 	treeBuilder = new TreeBuilder(charactersDfsOrderPtr, dfsCodePtr);
 	treeBuilder->buildTree();
 }
 
 void UnarchiveBuilder::decode() {
-	reader->readTextSize();
-	auto textSize = reader->getTextSize();
-	reader->readBlock();
-	auto compressedTextPtr = reader->getBlockPtr();
+	auto textSize = reader->readAndGetTextSize();
+	auto compressedTextPtr = reader->readAndGetBlockPtr();
 	auto codesTree = treeBuilder->getCodesTree();
 	safeDelete(decoder);
 	decoder = new Decoder(textSize, compressedTextPtr, codesTree);
@@ -80,11 +76,3 @@ void UnarchiveBuilder::writeEmptyFile() {
 		std::cerr << "can't open file to write";
 	}
 }
-
-UnarchiveBuilder::~UnarchiveBuilder() {
-	safeDelete(reader);
-	safeDelete(treeBuilder);
-	safeDelete(decoder);
-	safeDelete(writer);
-}
-				

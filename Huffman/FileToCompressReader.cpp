@@ -1,8 +1,12 @@
 #include "FileToCompressReader.h"
-#
+#include "HelpfulMethods.h"
 using namespace std;
 
 FileToCompressReader::FileToCompressReader()  {}
+
+FileToCompressReader::~FileToCompressReader() {
+	safeDelete(textPtr);
+}
 
 void FileToCompressReader::read(std::string filename) {
 	textPtr = new string{};
@@ -15,8 +19,4 @@ void FileToCompressReader::read(std::string filename) {
 
 string* FileToCompressReader::getTextPtr() {
 	return this->textPtr;
-}
-
-FileToCompressReader::~FileToCompressReader() {
-	safeDelete(textPtr);
 }

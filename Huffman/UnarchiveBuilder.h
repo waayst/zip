@@ -3,11 +3,8 @@
 #include "TreeBuilder.h"
 #include "Decoder.h"
 #include "DecompressedDataWriter.h"
-
 /*
-UnarchiveBuilder unzips binary file, reading info from it
-with what building a code tree and decoding the compressed text.
-After that rewritting the whole text to other file.
+UnarchiveBuilder gets filename to unzip and filename to save result to.
 */
 
 class UnarchiveBuilder{
@@ -19,19 +16,18 @@ public:
 	~UnarchiveBuilder();
 
 private:
-	bool fileIsOpened();
-	bool fileIsEmpty();
-
 	void openFile();
 	void buildTree();
 	void decode();
 	void write();
 	void writeEmptyFile();
+
+
+	std::string fileToDecompressName;
+	std::string fileDecompressedName;
+
 	CompressedFileReader* reader = nullptr;
 	TreeBuilder* treeBuilder = nullptr;
 	Decoder* decoder = nullptr;
 	DecompressedDataWriter* writer = nullptr;
-
-	std::string fileToDecompressName;
-	std::string fileDecompressedName;
 };

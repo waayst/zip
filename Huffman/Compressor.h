@@ -2,37 +2,40 @@
 #include "BNode.h"
 #include <iostream>
 #include <map>
-
 /*
-TextCompressor compresses text using codes tree,
-also storaging noncompressed text size.
+Compressor gets text and codes tree, 
+produces string data: characters in dfs order, dfs Code, compressed text.
+
+maybe make it compress dfs code too...
 */
 
 class Compressor {
 public:
 	Compressor();
-	Compressor(std::string* textPtr, BNode* codesTree);
-	void setCodesTree(BNode* newCodesTree);
-	void setTextPtr(std::string* newTextPtr);
-	
-	std::string* getCompressedTextPtr();
-	std::string* getDfsCodePtr();
-	std::string* getCharactersDfsOrderPtr();
+	Compressor           (std::string* textPtr, BNode* codesTree);
+	~Compressor();
 
 	void compress();
-	~Compressor();
+
+	void setCodesTree(BNode* newCodesTree);
+	void setTextPtr(std::string* newTextPtr);
+
+	std::string* getCharactersDfsOrderPtr();
+	std::string* getDfsCodePtr();
+	std::string* getCompressedTextPtr();
 private:
 	void createDfsInfo();
 	void createCompressedText();
 
-	void dfsTree(BNode* node, std::string curCode);
-	void writeCompressed(unsigned char bit);
+	void dfsTree        (BNode* node, std::string curCode);
 	void writeCompressed(std::string code);
+	void writeCompressed(char bit);
+
+	BNode* codesTree;
+	std::string* textPtr;
+
 	int byteNumber;
 	int byteOffset;
-
-	std::string* textPtr;
-	BNode* codesTree;
 	std::map<char, std::string> characterCodes;
 
 	std::string* charactersDfsOrderPtr;

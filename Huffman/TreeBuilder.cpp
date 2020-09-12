@@ -1,15 +1,37 @@
 #include "TreeBuilder.h"
+#include "HelpfulMethods.h"
 using namespace std;
 
-TreeBuilder::TreeBuilder() : codesTree(nullptr),
-				charactersDfsOrderPtr(nullptr),
-				dfsCodePtr(nullptr) {}
+TreeBuilder::TreeBuilder()
+	        :codesTree(nullptr),
+			 charactersDfsOrderPtr(nullptr),
+			 dfsCodePtr(nullptr) {}
 
 TreeBuilder::TreeBuilder(string* charactersDfsOrderPtr,
-						 string* dfsCodePtr) :
-				codesTree(nullptr),
-				charactersDfsOrderPtr(charactersDfsOrderPtr),
-				dfsCodePtr(dfsCodePtr) {}
+						 string* dfsCodePtr)
+	        :codesTree(nullptr), 
+	         charactersDfsOrderPtr(charactersDfsOrderPtr), 
+	         dfsCodePtr(dfsCodePtr) {}
+
+TreeBuilder::~TreeBuilder() {
+	safeDelete(codesTree);
+}
+
+void TreeBuilder::buildTree() {
+	auto& dfsRef = *dfsCodePtr;
+	auto& charactersRef = *charactersDfsOrderPtr;
+	leaf = 0;
+	prevCode = '2';
+	curCode = '2';
+	codesTree = new BNode();
+	BNode* curNode = codesTree;
+	for (auto i = 0; i < dfsRef.size(); ++i) {
+		curCode = dfsRef[i];
+		doStep(curNode);
+	}
+	curNode->setCharacter(charactersRef[leaf]);
+	//dfsTree(codesTree);
+}
 
 void TreeBuilder::setCharactersDfsOrderPtr(std::string* newCharactersDfsOrderPtr) {
 	charactersDfsOrderPtr = newCharactersDfsOrderPtr;
@@ -21,10 +43,6 @@ void TreeBuilder::setDfsCodePtr(std::string* newDfsCodePtr) {
 
 BNode* TreeBuilder::getCodesTree() {
 	return codesTree;
-}
-
-TreeBuilder::~TreeBuilder() {
-	safeDelete(codesTree);
 }
 
  void TreeBuilder::doStep(BNode* &curNode) {
@@ -59,20 +77,3 @@ TreeBuilder::~TreeBuilder() {
 		 dfsTree(node->getRight());
 	 }
  }
-
-void TreeBuilder::buildTree() {
-	auto& dfsRef = *dfsCodePtr;
-	auto& charactersRef = *charactersDfsOrderPtr;
-	leaf = 0;
-	prevCode = '2';
-	curCode = '2';
-	codesTree = new BNode();
-	BNode* curNode = codesTree;
-	for (auto i = 0; i < dfsRef.size(); ++i) {
-		curCode = dfsRef[i];
-		doStep(curNode);
-	}
-	curNode->setCharacter(charactersRef[leaf]);
-	//dfsTree(codesTree);
-}
-
