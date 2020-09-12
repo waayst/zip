@@ -36,7 +36,7 @@ void UnarchiveBuilder::unarchivate() {
 
 void UnarchiveBuilder::startReading() {
 	safeDelete(reader);
-	reader = new BnReader();
+	reader = new CompressedFileReader();
 	reader->startReading(fileToDecompressName);
 }
 
@@ -63,13 +63,13 @@ void UnarchiveBuilder::decode() {
 
 void UnarchiveBuilder::write() {
 	safeDelete(writer);
-	writer = new TextWriter(decoder->getTextPtr());
+	writer = new DecompressedWriter(decoder->getTextPtr());
 	writer->write(fileDecompressedName);
 }
 
 void UnarchiveBuilder::writeEmptyFile() {
 	safeDelete(writer);
-	writer = new TextWriter;
+	writer = new DecompressedWriter;
 	writer->writeEmptyFile(fileDecompressedName);
 }
 

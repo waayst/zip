@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
-#include "TextReader.h"
+#include "FileToCompressReader.h"
 #include "HuffmanProcessor.h"
-#include "TextCompressor.h"
-#include "BnWriter.h"
+#include "Compressor.h"
+#include "CompressedWriter.h"
 
 /*
 ArchieveBuilder - class that zips some file(fileToCompressName),
@@ -31,10 +31,10 @@ private:
 	void write();
 	void writeEmptyFile();
 
-	TextReader* reader = nullptr;
+	FileToCompressReader* reader = nullptr;
 	HuffmanProcessor* processor = nullptr;
-	TextCompressor* compressor = nullptr;
-	BnWriter* writer = nullptr;
+	Compressor* compressor = nullptr;
+	CompressedWriter* writer = nullptr;
 
 	std::string fileToCompressName;
 	std::string fileCompressedName;

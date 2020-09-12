@@ -21,13 +21,7 @@
     <ClCompile Include="HuffmanProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextCompressor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ArchiveBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TextReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -36,19 +30,28 @@
     <ClCompile Include="UnarchiveBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BnReader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BnWriter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TreeBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Decoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextWriter.cpp">
+    <ClCompile Include="CompressedFileReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileToCompressReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompressedWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DecompressedWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compressor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,25 +62,13 @@
     <ClInclude Include="HuffmanProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextCompressor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HelpfulMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ArchiveBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UnarchiveBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BnReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BnWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TreeBuilder.h">
@@ -86,7 +77,22 @@
     <ClInclude Include="Decoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextWriter.h">
+    <ClInclude Include="CompressedFileReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileToCompressReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompressedWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DecompressedWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compressor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,8 +1,8 @@
 #pragma once
-#include "BnReader.h"
+#include "CompressedFileReader.h"
 #include "TreeBuilder.h"
 #include "Decoder.h"
-#include "TextWriter.h"
+#include "DecompressedWriter.h"
 
 /*
 UnarchiveBuilder unzips binary file, reading info from it
@@ -27,10 +27,10 @@ private:
 	void decode();
 	void write();
 	void writeEmptyFile();
-	BnReader* reader = nullptr;
+	CompressedFileReader* reader = nullptr;
 	TreeBuilder* treeBuilder = nullptr;
 	Decoder* decoder = nullptr;
-	TextWriter* writer = nullptr;
+	DecompressedWriter* writer = nullptr;
 
 	std::string fileToDecompressName;
 	std::string fileDecompressedName;

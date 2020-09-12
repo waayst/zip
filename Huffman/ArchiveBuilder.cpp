@@ -33,7 +33,7 @@ bool ArchiveBuilder::fileIsEmpty() {
 
 void ArchiveBuilder::read() {
 	safeDelete(reader);
-	reader = new TextReader();
+	reader = new FileToCompressReader();
 	reader->read(fileToCompressName);
 }
 
@@ -45,14 +45,14 @@ void ArchiveBuilder::process() {
 
 void ArchiveBuilder::compress() {
 	safeDelete(compressor);
-	compressor = new TextCompressor(reader->getTextPtr(),
+	compressor = new Compressor(reader->getTextPtr(),
 									processor->getCodesTree());
 	compressor->compress();
 }
 
 void ArchiveBuilder::write() {
 	safeDelete(writer);
-	writer = new BnWriter(compressor->getCharactersDfsOrderPtr(),
+	writer = new CompressedWriter(compressor->getCharactersDfsOrderPtr(),
 						  compressor->getDfsCodePtr(),
 						  reader->getTextPtr()->size(),
 						  compressor->getCompressedTextPtr());
@@ -61,7 +61,7 @@ void ArchiveBuilder::write() {
 
 void ArchiveBuilder::writeEmptyFile() {
 	safeDelete(writer);
-	writer = new BnWriter;
+	writer = new CompressedWriter;
 	writer->writeEmptyFile(fileCompressedName);
 }
 
