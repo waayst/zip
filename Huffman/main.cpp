@@ -12,5 +12,5 @@ int main() {
 	archiver.archivate();
 	UnarchiveBuilder unarchiver(fileCompressed, fileDecompressed);
 	unarchiver.unarchivate();
+	std::cout << "done";
 }
-

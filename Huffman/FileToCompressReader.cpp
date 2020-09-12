@@ -1,5 +1,6 @@
 #include "FileToCompressReader.h"
 #include "HelpfulMethods.h"
+#include <iostream>
 using namespace std;
 
 FileToCompressReader::FileToCompressReader()  {}

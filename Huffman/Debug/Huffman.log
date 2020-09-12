@@ -1,3 +1,4 @@
-﻿  Decoder.cpp
-d:\code\c++\huffman vs\huffman\huffman\decoder.cpp(47): warning C4018: '<': signed/unsigned mismatch
+﻿  FileToCompressReader.cpp
+  main.cpp
+  Generating Code...
   Huffman.vcxproj -> D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe
