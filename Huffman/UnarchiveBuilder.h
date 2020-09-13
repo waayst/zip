@@ -5,6 +5,8 @@
 #include "DecompressedDataWriter.h"
 /*
 UnarchiveBuilder gets filename to unzip and filename to save result to.
+
+Maybe should be refactored, having common superclass with ArchiveBuilder.
 */
 
 class UnarchiveBuilder{
@@ -12,8 +14,9 @@ public:
 	UnarchiveBuilder();
 	UnarchiveBuilder(std::string fileToDecompressName,
 		             std::string fileDecompressedName);
-	void unarchivate();
 	~UnarchiveBuilder();
+
+	void unarchivate();
 
 private:
 	void openFile();

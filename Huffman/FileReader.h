@@ -11,6 +11,7 @@ public:
 	~FileReader();
 
 	void openBinaryFile(std::string filename);
+
 	bool fileIsOpened() const;
 	bool fileIsEmpty() const;
 

@@ -20,8 +20,8 @@ ArchiveBuilder::~ArchiveBuilder() {
 
 void ArchiveBuilder::archivate() {
 	openFile();
-	if (reader->fileIsOpened()) {
-		if (reader->fileIsEmpty()) {
+	if (fileIsOpened()) {
+		if (fileIsEmpty()) {
 			writeEmptyFile();
 		} else {
 			read();
@@ -36,6 +36,14 @@ void ArchiveBuilder::openFile() {
 	safeDelete(reader);
 	reader = new FileToCompressReader;
 	reader->openBinaryFile(fileToCompressName);
+}
+
+bool ArchiveBuilder::fileIsOpened() {
+	return reader->fileIsOpened();
+}
+
+bool ArchiveBuilder::fileIsEmpty() {
+	return reader->fileIsEmpty();
 }
 
 void ArchiveBuilder::read() {

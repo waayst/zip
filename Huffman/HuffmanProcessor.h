@@ -14,11 +14,11 @@ public:
 	HuffmanProcessor(std::string* textPtr);
 	~HuffmanProcessor();
 
+	void process();
+
 	void setText    (std::string* newTextPtr);
 	std::string* getTextPtr();
 	BNode* getCodesTree();
-
-	void process();
 
 private:
 	using latenciesListIterator = std::list<std::pair<BNode*, int>>::iterator;

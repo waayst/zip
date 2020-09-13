@@ -8,6 +8,8 @@
 ArchieveBuilder gets filename to compress.
 Reads it, than processes Huffman algorithm, than compresses text.
 After that writes auxillary information and compressed text to another file.
+
+Maybe should be refactored, having common superclass with UnarchiveBuilder.
 */
 
 class ArchiveBuilder {
@@ -22,6 +24,8 @@ public:
 
 private:
 	void openFile();
+	bool fileIsOpened();
+	bool fileIsEmpty();
 	void read();
 	void process();
 	void compress();

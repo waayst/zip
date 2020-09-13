@@ -8,11 +8,10 @@ FileWriter is a base class for CompressedDataWriter and DecompressedDataWriter
 class FileWriter {
 public:
 	FileWriter();
-	void openBinaryFile(std::string filename);
-
-	void writeEmptyFile();
-
 	~FileWriter();
+
+	void openBinaryFile(std::string filename);
+	void writeEmptyFile();
 
 	bool fileIsOpened() const;
 

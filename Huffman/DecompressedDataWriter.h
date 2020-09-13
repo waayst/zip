@@ -11,7 +11,6 @@ class DecompressedDataWriter : public FileWriter {
 public:
 	DecompressedDataWriter();
 	DecompressedDataWriter(std::string* textPtr);
-
 	~DecompressedDataWriter();
 
 	void write();
