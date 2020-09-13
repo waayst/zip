@@ -15,12 +15,18 @@ Maybe should be refactored, having common superclass with UnarchiveBuilder.
 class ArchiveBuilder {
 public:
 	ArchiveBuilder();
-	ArchiveBuilder(std::string fileToCompressName,
-				   std::string fileCompressedName);
+	ArchiveBuilder            (std::string fileToCompressName,
+				               std::string fileCompressedName);
+	~ArchiveBuilder();
 
+	void archivate            (std::string newFileToCompressName,
+						       std::string newFileCompressedName);
 	void archivate();
 	
-	~ArchiveBuilder();
+	void setFileToCompressName(std::string newFileToCompressName);
+	void setFileCompressedName(std::string newFileCompressedName);
+	std::string getFileToCompressName() const;
+	std::string getFileCompressedName() const;
 
 private:
 	void openFile();

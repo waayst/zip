@@ -12,11 +12,18 @@ Maybe should be refactored, having common superclass with ArchiveBuilder.
 class UnarchiveBuilder{
 public:
 	UnarchiveBuilder();
-	UnarchiveBuilder(std::string fileToDecompressName,
-		             std::string fileDecompressedName);
+	UnarchiveBuilder             (std::string fileToDecompressName,
+		                          std::string fileDecompressedName);
 	~UnarchiveBuilder();
 
+	void unarchivate            (std::string newFileToDecompressName,
+		                         std::string newFileDecompressedName);
 	void unarchivate();
+
+	void setFileToDecompressName(std::string newFileToDecompressName);
+	void setFileDecompressedName(std::string newFileDecompressedName);
+	std::string getFileToDecompressName() const;
+	std::string getFileDecompressedName() const;
 
 private:
 	void openFile();

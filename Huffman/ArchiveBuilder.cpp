@@ -17,6 +17,13 @@ ArchiveBuilder::~ArchiveBuilder() {
 	safeDelete(writer);
 }
 
+void ArchiveBuilder::archivate(
+				     string newFileToCompressName,
+	                 string newFileCompressedName) {
+	setFileToCompressName(newFileToCompressName);
+	setFileCompressedName(newFileCompressedName);
+	archivate();
+}
 
 void ArchiveBuilder::archivate() {
 	openFile();
@@ -31,6 +38,23 @@ void ArchiveBuilder::archivate() {
 		}
 	} 
 }
+
+void ArchiveBuilder::setFileToCompressName(string newFileToCompressName) {
+	fileToCompressName = newFileToCompressName;
+}
+
+void ArchiveBuilder::setFileCompressedName(string newFileCompressedName) {
+	fileCompressedName = newFileCompressedName;
+}
+
+string ArchiveBuilder::getFileToCompressName() const {
+	return fileToCompressName;
+}
+
+string ArchiveBuilder::getFileCompressedName() const {
+	return fileCompressedName;
+}
+
 
 void ArchiveBuilder::openFile() {
 	safeDelete(reader);

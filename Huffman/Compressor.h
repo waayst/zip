@@ -23,6 +23,7 @@ public:
 	std::string* getCharactersDfsOrderPtr();
 	std::string* getDfsCodePtr();
 	std::string* getCompressedTextPtr();
+
 private:
 	void createDfsInfo();
 	void createCompressedText();

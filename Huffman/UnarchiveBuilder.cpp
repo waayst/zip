@@ -19,6 +19,14 @@ UnarchiveBuilder::~UnarchiveBuilder() {
 	safeDelete(writer);
 }
 
+void UnarchiveBuilder::unarchivate(
+				       string newFileToDecompressName,
+	                   string newFileDecompressedName) {
+	setFileToDecompressName(newFileToDecompressName);
+	setFileDecompressedName(newFileDecompressedName);
+	unarchivate();
+}
+
 void UnarchiveBuilder::unarchivate() {
 	openFile();
 	if (reader->fileIsOpened()) {
@@ -30,6 +38,24 @@ void UnarchiveBuilder::unarchivate() {
 			write();
 		}
 	}
+}
+
+void UnarchiveBuilder::setFileToDecompressName(
+					   string newFileToDecompressName) {
+	fileToDecompressName = newFileToDecompressName;
+}
+
+void UnarchiveBuilder::setFileDecompressedName(
+					   string newFileDecompressedName) {
+	fileDecompressedName = newFileDecompressedName;
+}
+
+string UnarchiveBuilder::getFileToDecompressName() const {
+	return fileToDecompressName;
+}
+
+string UnarchiveBuilder::getFileDecompressedName() const {
+	return fileDecompressedName;
 }
 
 void UnarchiveBuilder::openFile() {
