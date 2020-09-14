@@ -2,8 +2,8 @@
 #include <iostream>
 #include <fstream>
 /*
-Class FileWriter is a base class for CompressedDataWriter and DecompressedDataWriter
-*/
+ * Class FileWriter is a base class for CompressedDataWriter and DecompressedDataWriter
+ */
 
 class FileWriter {
 public:

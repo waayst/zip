@@ -4,20 +4,20 @@
 #include "FileReader.h"
 #include "HelpfulMethods.h"
 /* 
-Class CompressedFileReader reads binary file, which content represents some compressed data.
-
-CompressedFileReader gets filename.
-
-String are read by "blocks", "block" is a unsigned 32-bit size of string and
-string itself afterwards.
-Not compressed text size is just an unsigned 32-bit int.
-
-Brief description of CompressedFileReader work:
-1. Read block for characters in dfs order.
-2. Read block for dfs of Huffman codes.
-3. Read size of not compressed text.
-4. Read block for compressed text.
-*/
+ * Class CompressedFileReader reads binary file, which content represents some compressed data.
+ * 
+ * CompressedFileReader gets filename.
+ *
+ * Strings are read by "blocks", "block" is a unsigned 32-bit size of string and
+ * string itself afterwards.
+ * Not compressed text size is just an unsigned 32-bit int.
+ * 
+ * Brief description of CompressedFileReader work:
+ * 1. Read block for characters in dfs order.
+ * 2. Read block for dfs of Huffman codes.
+ * 3. Read size of not compressed text.
+ * 4. Read block for compressed text.
+ */
 
 class CompressedFileReader : public FileReader {
 public:

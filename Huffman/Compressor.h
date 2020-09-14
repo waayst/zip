@@ -3,19 +3,19 @@
 #include <iostream>
 #include <map>
 /*
-Compressor compressed text using huffman codes tree.
-
-Compressor gets:
-1. Text to compress.
-2. Huffman codes tree.
-
-Brief description of Compressor work:
-1. Dfs tree to get characters codes.
-2. Write each character in text as a code, compressed from bytes to bits.
-
-maybe make it compress dfs code too, 
-maybe use bitset.
-*/
+ * Compressor compressed text using huffman codes tree.
+ * 
+ * Compressor gets:
+ * 1. Text to compress.
+ * 2. Huffman codes tree.
+ * 
+ * Brief description of Compressor work:
+ * 1. Dfs tree to get characters codes.
+ * 2. Write each character in text as a code, compressed from bytes to bits.
+ * 
+ * maybe make it compress dfs code too, 
+ * maybe use bitset.
+ */
 
 class Compressor {
 public:

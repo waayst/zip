@@ -5,19 +5,19 @@
 #include "Compressor.h"
 #include "CompressedDataWriter.h"
 /*
-Class ArchieveBuilder archivates file, saving result to another file.
-ArchieveBuilder gets:
-1. Name of file to compress.
-2. Name of file to save to.
-
-Brief description of ArchieveBuilder work:
-1. Read content of file to compress.
-2. Process Huffman algorithm.
-3. Compress text.
-4. Write auxillary information and compressed text to another file.
-
-Maybe should be refactored, having common superclass with UnarchiveBuilder.
-*/
+ * Class ArchieveBuilder archivates file, saving result to another file. 
+ * ArchieveBuilder gets: 
+ * 1. Name of file to compress.
+ * 2. Name of file to save to.
+ *
+ * Brief description of ArchieveBuilder work:
+ * 1. Read content of file to compress.
+ * 2. Process Huffman algorithm.
+ * 3. Compress text.
+ * 4. Write auxillary information and compressed text to another file.
+ *
+ * Maybe should be refactored, having common superclass with UnarchiveBuilder.
+ */
 
 class ArchiveBuilder {
 public:

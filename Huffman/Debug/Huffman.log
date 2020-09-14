@@ -1,2 +1,19 @@
-﻿  UnarchiveBuilder.cpp
+﻿  ArchiveBuilder.cpp
+  BNode.cpp
+  CompressedDataWriter.cpp
+  CompressedFileReader.cpp
+  Compressor.cpp
+  Decoder.cpp
+d:\code\c++\huffman vs\huffman\huffman\decoder.cpp(47): warning C4018: '<': signed/unsigned mismatch
+  DecompressedDataWriter.cpp
+  FileReader.cpp
+  FileToCompressReader.cpp
+  FileWriter.cpp
+  HuffmanProcessor.cpp
+  TreeBuilder.cpp
+d:\code\c++\huffman vs\huffman\huffman\treebuilder.cpp(28): warning C4018: '<': signed/unsigned mismatch
+  UnarchiveBuilder.cpp
+  main.cpp
+  Generating Code...
+  LINK : D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe not found or not built by the last incremental link; performing full link
   Huffman.vcxproj -> D:\Code\C++\Huffman VS\Huffman\Debug\Huffman.exe

@@ -3,10 +3,10 @@
 #include <fstream>
 #include "FileReader.h"
 /* 
-Class FileToCompressReader reads content of file and saves it.
-
-FileToCompressReader gets filename and saves all content of file in one string.
-*/
+ * Class FileToCompressReader reads content of file and saves it.
+ *
+ * FileToCompressReader gets filename and saves all content of file in one string.
+ */
 
 class FileToCompressReader : public FileReader {
 public:
