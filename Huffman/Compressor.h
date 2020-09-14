@@ -3,10 +3,18 @@
 #include <iostream>
 #include <map>
 /*
-Compressor gets text and codes tree, 
-produces string data: characters in dfs order, dfs Code, compressed text.
+Compressor compressed text using huffman codes tree.
 
-maybe make it compress dfs code too...
+Compressor gets:
+1. Text to compress.
+2. Huffman codes tree.
+
+Brief description of Compressor work:
+1. Dfs tree to get characters codes.
+2. Write each character in text as a code, compressed from bytes to bits.
+
+maybe make it compress dfs code too, 
+maybe use bitset.
 */
 
 class Compressor {
@@ -17,12 +25,11 @@ public:
 
 	void compress();
 
-	void setCodesTree   (BNode* newCodesTree);
-	void setTextPtr     (std::string* newTextPtr);
-
 	std::string* getCharactersDfsOrderPtr();
 	std::string* getDfsCodePtr();
 	std::string* getCompressedTextPtr();
+	void setCodesTree   (BNode* newCodesTree);
+	void setTextPtr     (std::string* newTextPtr);
 
 private:
 	void createDfsInfo();

@@ -29,25 +29,19 @@ void UnarchiveBuilder::unarchivate(
 
 void UnarchiveBuilder::unarchivate() {
 	openFile();
-	if (reader->fileIsOpened()) {
-		if (reader->fileIsEmpty()) {
-			writeEmptyFile();
-		} else {
-			buildTree();
-			decode();
-			write();
-		}
+	if (!reader->fileIsOpened()) {
+		cerr << "file " << fileToDecompressName.c_str() << " can't be opened";
+		return;
 	}
-}
-
-void UnarchiveBuilder::setFileToDecompressName(
-					   string newFileToDecompressName) {
-	fileToDecompressName = newFileToDecompressName;
-}
-
-void UnarchiveBuilder::setFileDecompressedName(
-					   string newFileDecompressedName) {
-	fileDecompressedName = newFileDecompressedName;
+	if (reader->fileIsEmpty()) {
+		cerr << "file " << fileToDecompressName.c_str() << " is empty";
+		writeEmptyFile();
+		return;
+	}
+	read();
+	buildTree();
+	decode();
+	write();
 }
 
 string UnarchiveBuilder::getFileToDecompressName() const {
@@ -58,26 +52,38 @@ string UnarchiveBuilder::getFileDecompressedName() const {
 	return fileDecompressedName;
 }
 
+void UnarchiveBuilder::setFileToDecompressName(
+	string newFileToDecompressName) {
+	fileToDecompressName = newFileToDecompressName;
+}
+
+void UnarchiveBuilder::setFileDecompressedName(
+	string newFileDecompressedName) {
+	fileDecompressedName = newFileDecompressedName;
+}
+
 void UnarchiveBuilder::openFile() {
 	safeDelete(reader);
-	reader = new CompressedFileReader();
+	reader = new CompressedFileReader{};
 	reader->openBinaryFile(fileToDecompressName);
 }
 
+void UnarchiveBuilder::read() {
+	reader->read();
+}
+
 void UnarchiveBuilder::buildTree() {
-	auto charactersDfsOrderPtr = reader->readAndGetBlockPtr();
-	auto dfsCodePtr = reader->readAndGetBlockPtr();
 	safeDelete(treeBuilder);
-	treeBuilder = new TreeBuilder(charactersDfsOrderPtr, dfsCodePtr);
+	treeBuilder = new TreeBuilder(reader->getCharactersDfsOrderPtr(),
+								  reader->getDfsCodePtr());
 	treeBuilder->buildTree();
 }
 
 void UnarchiveBuilder::decode() {
-	auto textSize = reader->readAndGetTextSize();
-	auto compressedTextPtr = reader->readAndGetBlockPtr();
-	auto codesTree = treeBuilder->getCodesTree();
 	safeDelete(decoder);
-	decoder = new Decoder(textSize, compressedTextPtr, codesTree);
+	decoder = new Decoder(reader->getTextSize(),
+		                  reader->getCompressedTextPtr(),
+		                  treeBuilder->getCodesTree());
 	decoder->decode();
 }
 

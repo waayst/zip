@@ -22,14 +22,6 @@ Compressor::Compressor(string* textPtr, BNode* codesTree)
 	       :textPtr(textPtr),
 	        codesTree(codesTree) {}
 
-void Compressor::setTextPtr(string* newTextPtr) {
-	textPtr = newTextPtr;
-}
-
-void Compressor::setCodesTree(BNode* newCodesTree) {
-	codesTree = newCodesTree;
-}
-
 std::string* Compressor::getCharactersDfsOrderPtr() {
 	return charactersDfsOrderPtr;
 }
@@ -40,6 +32,14 @@ std::string* Compressor::getDfsCodePtr() {
 
 std::string* Compressor::getCompressedTextPtr() {
 	return compressedTextPtr;
+}
+
+void Compressor::setCodesTree(BNode* newCodesTree) {
+	codesTree = newCodesTree;
+}
+
+void Compressor::setTextPtr(string* newTextPtr) {
+	textPtr = newTextPtr;
 }
 
 void Compressor::createDfsInfo() {

@@ -4,7 +4,9 @@
 #include "HelpfulMethods.h"
 #pragma once
 /*
-DecompressedDataWriter writes whole decompressed data to file in one go.
+Class DecompressedDataWriter writes decompressed data to binary file.
+
+DecompressedDataWriter gets decompressed text and writes it as one string to file.
 */
 
 class DecompressedDataWriter : public FileWriter {

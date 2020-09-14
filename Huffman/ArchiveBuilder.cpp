@@ -27,24 +27,19 @@ void ArchiveBuilder::archivate(
 
 void ArchiveBuilder::archivate() {
 	openFile();
-	if (fileIsOpened()) {
-		if (fileIsEmpty()) {
-			writeEmptyFile();
-		} else {
-			read();
-			process();
-			compress();
-			write();
-		}
-	} 
-}
-
-void ArchiveBuilder::setFileToCompressName(string newFileToCompressName) {
-	fileToCompressName = newFileToCompressName;
-}
-
-void ArchiveBuilder::setFileCompressedName(string newFileCompressedName) {
-	fileCompressedName = newFileCompressedName;
+	if (!reader->fileIsOpened()) {
+		cerr << "file " << fileToCompressName.c_str() << " can't be opened";
+		return;
+	}
+	if (reader->fileIsEmpty()) {
+		cerr << "file " << fileToCompressName.c_str() << " is empty";
+		writeEmptyFile();
+		return;
+	}
+    read();
+	process();
+    compress();
+	write();
 }
 
 string ArchiveBuilder::getFileToCompressName() const {
@@ -55,19 +50,17 @@ string ArchiveBuilder::getFileCompressedName() const {
 	return fileCompressedName;
 }
 
+void ArchiveBuilder::setFileToCompressName(string newFileToCompressName) {
+	fileToCompressName = newFileToCompressName;
+}
 
+void ArchiveBuilder::setFileCompressedName(string newFileCompressedName) {
+	fileCompressedName = newFileCompressedName;
+}
 void ArchiveBuilder::openFile() {
 	safeDelete(reader);
 	reader = new FileToCompressReader;
 	reader->openBinaryFile(fileToCompressName);
-}
-
-bool ArchiveBuilder::fileIsOpened() {
-	return reader->fileIsOpened();
-}
-
-bool ArchiveBuilder::fileIsEmpty() {
-	return reader->fileIsEmpty();
 }
 
 void ArchiveBuilder::read() {

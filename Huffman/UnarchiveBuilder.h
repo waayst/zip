@@ -4,7 +4,16 @@
 #include "Decoder.h"
 #include "DecompressedDataWriter.h"
 /*
-UnarchiveBuilder gets filename to unzip and filename to save result to.
+Class UnarchiveBuilder unarchivates file, saving result to another file.
+ArchieveBuilder gets:
+1. Name of file to decompress.
+2. Name of file to save to.
+
+Brief description of ArchieveBuilder work:
+1. Read content of file to decompress.
+2. Build Huffman codes tree.
+3. Decodes text.
+4. Write decompressed data to another file. 
 
 Maybe should be refactored, having common superclass with ArchiveBuilder.
 */
@@ -20,13 +29,14 @@ public:
 		                         std::string newFileDecompressedName);
 	void unarchivate();
 
-	void setFileToDecompressName(std::string newFileToDecompressName);
-	void setFileDecompressedName(std::string newFileDecompressedName);
 	std::string getFileToDecompressName() const;
 	std::string getFileDecompressedName() const;
+	void setFileToDecompressName(std::string newFileToDecompressName);
+	void setFileDecompressedName(std::string newFileDecompressedName);
 
 private:
 	void openFile();
+	void read();
 	void buildTree();
 	void decode();
 	void write();

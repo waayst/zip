@@ -5,9 +5,16 @@
 #include "Compressor.h"
 #include "CompressedDataWriter.h"
 /*
-ArchieveBuilder gets filename to compress.
-Reads it, than processes Huffman algorithm, than compresses text.
-After that writes auxillary information and compressed text to another file.
+Class ArchieveBuilder archivates file, saving result to another file.
+ArchieveBuilder gets:
+1. Name of file to compress.
+2. Name of file to save to.
+
+Brief description of ArchieveBuilder work:
+1. Read content of file to compress.
+2. Process Huffman algorithm.
+3. Compress text.
+4. Write auxillary information and compressed text to another file.
 
 Maybe should be refactored, having common superclass with UnarchiveBuilder.
 */
@@ -23,15 +30,13 @@ public:
 						       std::string newFileCompressedName);
 	void archivate();
 	
-	void setFileToCompressName(std::string newFileToCompressName);
-	void setFileCompressedName(std::string newFileCompressedName);
 	std::string getFileToCompressName() const;
 	std::string getFileCompressedName() const;
+	void setFileToCompressName(std::string newFileToCompressName);
+	void setFileCompressedName(std::string newFileCompressedName);
 
 private:
 	void openFile();
-	bool fileIsOpened();
-	bool fileIsEmpty();
 	void read();
 	void process();
 	void compress();

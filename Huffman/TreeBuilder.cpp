@@ -33,16 +33,16 @@ void TreeBuilder::buildTree() {
 	//dfsTree(codesTree);
 }
 
+BNode* TreeBuilder::getCodesTree() {
+	return codesTree;
+}
+
 void TreeBuilder::setCharactersDfsOrderPtr(std::string* newCharactersDfsOrderPtr) {
 	charactersDfsOrderPtr = newCharactersDfsOrderPtr;
 }
 
 void TreeBuilder::setDfsCodePtr(std::string* newDfsCodePtr) {
 	dfsCodePtr = newDfsCodePtr;
-}
-
-BNode* TreeBuilder::getCodesTree() {
-	return codesTree;
 }
 
  void TreeBuilder::doStep(BNode* &curNode) {

@@ -3,8 +3,9 @@
 #include <fstream>
 #include "FileReader.h"
 /* 
-FileToCompressReader gets filename and reads whole
-file as one string in one go and saves result.
+Class FileToCompressReader reads content of file and saves it.
+
+FileToCompressReader gets filename and saves all content of file in one string.
 */
 
 class FileToCompressReader : public FileReader {

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 /*
-FileReader is a base class of CompressedFileReader and FileToCompressReader
+Class FileReader is a base class of CompressedFileReader and FileToCompressReader
 */
 
 class FileReader {

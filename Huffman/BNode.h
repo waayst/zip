@@ -1,6 +1,6 @@
 #pragma once
 /*
-BNode is a binary Node used in creating huffman tree of codes.
+Class BNode is a binary Node used in creating huffman tree of codes.
 */
 
 class BNode {

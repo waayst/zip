@@ -3,31 +3,66 @@ using namespace std;
 
 CompressedFileReader::CompressedFileReader() {}
 
-string* CompressedFileReader::readAndGetBlockPtr() {
-	readBlock();
-	return getBlockPtr();
+void CompressedFileReader::read() {
+	readCharactersDfsOrder();
+	readDfsCode();
+	readTextSize();
+	readCompressedText();
 }
 
-uint32_t CompressedFileReader::readAndGetTextSize() {
-	readSize();
-	return getTextSize();
+string * CompressedFileReader::getCharactersDfsOrderPtr() const {
+	return charactersDfsOrderPtr;
 }
 
-string* CompressedFileReader::getBlockPtr() {
-	return blockPtr;
+string * CompressedFileReader::getDfsCodePtr() const {
+	return dfsCodePtr;
 }
 
-uint32_t CompressedFileReader::getTextSize() {
+uint32_t CompressedFileReader::getTextSize() const {
 	return textSize;
+}
+
+string * CompressedFileReader::getCompressedTextPtr() const {
+	return compressedTextPtr;
+}
+
+void CompressedFileReader::readCharactersDfsOrder() {
+	charactersDfsOrderPtr = readBlockAndGetDataPtr();
+}
+
+void CompressedFileReader::readDfsCode() {
+	dfsCodePtr = readBlockAndGetDataPtr();
+}
+
+void CompressedFileReader::readTextSize() {
+	readSize();
+	textSize = getDataSize();
+}
+
+void CompressedFileReader::readCompressedText() {
+	compressedTextPtr = readBlockAndGetDataPtr();
+}
+
+string* CompressedFileReader::readBlockAndGetDataPtr() {
+	readBlock();
+	return getDataPtr();
+}
+
+string* CompressedFileReader::getDataPtr() const {
+	return dataPtr;
+}
+
+uint32_t CompressedFileReader::getDataSize() const {
+	return dataSize;
 }
 
 void CompressedFileReader::readBlock() {
 	readSize();
-	blockPtr = new string(textSize, '0');
-	char* ptr = &((*blockPtr)[0]);
-	filePtr->read(ptr, textSize);
+	dataPtr = new string(dataSize, '0');
+	char* ptr = &((*dataPtr)[0]);
+	filePtr->read(ptr, dataSize);
 }
 
 void CompressedFileReader::readSize() {
-	filePtr->read((char*)&textSize, sizeof(textSize));
+	filePtr->read((char*)&dataSize, sizeof(dataSize));
 }
