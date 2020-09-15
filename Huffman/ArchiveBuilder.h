@@ -16,7 +16,6 @@
  * 2. Process Huffman algorithm.
  * 3. Compress text.
  * 4. Write auxillary information and compressed text to another file.
- *
  */
 
 class ArchiveBuilder : public FileWorker {
@@ -25,6 +24,7 @@ public:
 	ArchiveBuilder(std::string fileToCompressName,
 				   std::string fileCompressedName);
 	~ArchiveBuilder();
+
 private:
 	void openFile() override;
 	void workWithReadData() override;

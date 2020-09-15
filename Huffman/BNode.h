@@ -11,17 +11,17 @@ public:
 	BNode            (BNode* left, BNode* right, BNode* parent);
 	~BNode();
 
-	BNode* getLeft();
-	BNode* getRight();
-	BNode* getParent();
-	char getCharacter();
+	BNode* getLeft() const;
+	BNode* getRight() const;
+	BNode* getParent() const;
+	char getCharacter() const;
 
 	void setLeft     (BNode*  newLeft);
 	void setRight    (BNode* newRight);
 	void setParent   (BNode* newParent);
 	void setCharacter(char newCharacter);
 	
-	bool isALeaf();
+	bool isALeaf() const;
 	
 private:
 	BNode* left = nullptr;

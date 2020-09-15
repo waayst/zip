@@ -8,8 +8,7 @@ UnarchiveBuilder::UnarchiveBuilder()  {}
 UnarchiveBuilder::UnarchiveBuilder(
 			      string fileToDecompressName,
 	              string fileDecompressedName)
-	             :FileWorker(fileToDecompressName, fileDecompressedName)
-{}
+	             :FileWorker(fileToDecompressName, fileDecompressedName) {}
 
 UnarchiveBuilder::~UnarchiveBuilder() {
 	safeDelete(treeBuilder);

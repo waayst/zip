@@ -54,4 +54,3 @@ private:
 	std::string* dfsCodePtr;
 	std::string* compressedTextPtr;
 };
-

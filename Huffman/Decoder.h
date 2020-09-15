@@ -30,7 +30,7 @@ public:
 
 	void decode();
 
-	std::string* getTextPtr();
+	std::string* getTextPtr() const;
 	void setTextSize(std::uint32_t newTextSize);
 	void setCompressedTextPtr(std::string* newCompressedTextPtr);
 	void setCodesTree(BNode* newCodesTree);

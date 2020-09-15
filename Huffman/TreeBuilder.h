@@ -27,12 +27,11 @@ public:
 
 	void buildTree();
 
-	BNode* getCodesTree();
+	BNode* getCodesTree() const;
 	void setCharactersDfsOrderPtr(std::string* newCharacterDfsOrderPtr);
 	void setDfsCodePtr           (std::string* newDfsCodePtr);
 
 private:
-
 	int leaf;
 	void doStep                  (BNode* &curNode);
 	char prevCode;

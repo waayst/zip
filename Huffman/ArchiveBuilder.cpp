@@ -14,15 +14,15 @@ ArchiveBuilder::~ArchiveBuilder() {
 	safeDelete(compressor);
 }
 
-void ArchiveBuilder::workWithReadData() {
-	process();
-	compress();
-}
-
 void ArchiveBuilder::openFile() {
 	safeDelete(reader);
 	reader = new FileToCompressReader{};
 	reader->openBinaryFile(fileToReadName);
+}
+
+void ArchiveBuilder::workWithReadData() {
+	process();
+	compress();
 }
 
 void ArchiveBuilder::process() {

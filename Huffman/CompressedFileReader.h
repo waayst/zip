@@ -18,6 +18,7 @@
  * 3. Read size of not compressed text.
  * 4. Read block for compressed text.
  */
+
 class CompressedFileData; 
 
 class CompressedFileReader : public FileReader {
@@ -27,7 +28,7 @@ public:
 
 	void read() override;
 
-	FileData* getReadData() override;
+	FileData* getReadData() const override;
 
 private:
 	void readCharactersDfsOrder();

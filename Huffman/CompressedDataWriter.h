@@ -32,7 +32,8 @@ public:
 					     std::string* compressedTextPtr);
 	~CompressedDataWriter();
 
-	void write();
+	void write() override;
+
 private:
 
 	void writeCharacters();
@@ -48,4 +49,3 @@ private:
 	std::uint32_t textSize;
 	std::string* compressedTextPtr = nullptr;
 };
-

@@ -18,7 +18,8 @@ void Compressor::compress() {
 	createCompressedText();
 }
 
-Compressor::Compressor(string* textPtr, BNode* codesTree)
+Compressor::Compressor(string* textPtr,
+	                   BNode* codesTree)
 	       :textPtr(textPtr),
 	        codesTree(codesTree) {}
 

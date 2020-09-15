@@ -5,10 +5,11 @@ using namespace std;
 Decoder::Decoder() {}
 
 Decoder::Decoder(uint32_t textSize,
-	std::string* compressedTextPtr, BNode* codesTree):
-	textSize(textSize),
-	compressedTextPtr(compressedTextPtr),
-	codesTree(codesTree) {}
+	             string* compressedTextPtr,
+	             BNode* codesTree)
+	    :textSize(textSize),
+	     compressedTextPtr(compressedTextPtr),
+	     codesTree(codesTree) {}
 
 Decoder::Decoder(FileData * compressedFileDataPtr, BNode* codesTree)
 	    :codesTree(codesTree) {
@@ -17,7 +18,7 @@ Decoder::Decoder(FileData * compressedFileDataPtr, BNode* codesTree)
 	setCompressedTextPtr(castedData->getCompressedTextPtr());
 }
 
-string* Decoder::getTextPtr() {
+string* Decoder::getTextPtr() const {
 	return textPtr;
 }
 

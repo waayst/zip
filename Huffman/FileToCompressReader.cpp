@@ -12,14 +12,15 @@ FileToCompressReader::~FileToCompressReader() {
 void FileToCompressReader::read() {
 	auto textPtr = new string{};
 	char character;
+	filePtr->read(&character, sizeof character);
 	while (!filePtr->eof()) {
-		filePtr->read(&character, sizeof character);
 		textPtr->push_back(character);
+		filePtr->read(&character, sizeof character);
 	}
 	fileToCompressDataPtr = new FileToCompressData(textPtr);
 }
 
-FileData * FileToCompressReader::getReadData() {
+FileData * FileToCompressReader::getReadData() const {
 	return fileToCompressDataPtr;
 }
 

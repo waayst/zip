@@ -14,7 +14,8 @@ public:
 	void openBinaryFile(std::string filename);
 
 	virtual void read() = 0;
-	virtual FileData* getReadData() = 0;
+
+	virtual FileData* getReadData() const = 0;
 
 	bool fileIsOpened() const;
 	bool fileIsEmpty() const;

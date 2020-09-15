@@ -2,15 +2,18 @@
 #include "HelpfulMethods.h"
 using namespace std;
 
-HuffmanProcessor::HuffmanProcessor():
-	textPtr(nullptr), codesTree(nullptr) {}
+HuffmanProcessor::HuffmanProcessor() {}
 
-HuffmanProcessor::HuffmanProcessor(std::string* textPtr):
-    textPtr(textPtr), codesTree(nullptr) {}
+HuffmanProcessor::HuffmanProcessor(std::string* textPtr)
+	             :textPtr(textPtr) {}
 
 HuffmanProcessor::HuffmanProcessor(FileData * fileToCompressDataPtr) {
 	auto castedData = (FileToCompressData*)fileToCompressDataPtr;
 	setTextPtr(castedData->getTextPtr());
+}
+
+HuffmanProcessor::~HuffmanProcessor() {
+	safeDelete(codesTree);
 }
 
 BNode* HuffmanProcessor::getCodesTree() {
@@ -47,8 +50,7 @@ void HuffmanProcessor::createLatenciesList() {
 HuffmanProcessor::latenciesListIterator HuffmanProcessor::getMinimalLatencyIterator() {
 	auto minNodeIterator = latenciesList.begin();
 	int minLatency = latenciesList.begin()->second;
-		for (auto it = latenciesList.begin();
-			it != latenciesList.end(); ++it) {
+		for (auto it = latenciesList.begin(); it != latenciesList.end(); ++it) {
 		auto curLatency = it->second;
 		if (minLatency > curLatency) {
 			minNodeIterator = it;
@@ -81,8 +83,4 @@ void HuffmanProcessor::process() {
 	createLatenciesMap();
 	createLatenciesList();
 	createCodeTree();
-}
-
-HuffmanProcessor::~HuffmanProcessor() {
-	safeDelete(codesTree);
 }

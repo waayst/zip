@@ -39,7 +39,7 @@ void TreeBuilder::buildTree() {
 	//dfsTree(codesTree);
 }
 
-BNode* TreeBuilder::getCodesTree() {
+BNode* TreeBuilder::getCodesTree() const {
 	return codesTree;
 }
 

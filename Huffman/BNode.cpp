@@ -5,30 +5,31 @@ BNode::BNode() {}
 
 BNode::BNode(char character): character(character) {}
 
-BNode::BNode(BNode* left, BNode* right) :
-	left(left), right(right) {}
+BNode::BNode(BNode* left, BNode* right)
+	  :left(left), right(right) {}
 
-BNode::BNode(BNode* left, BNode* right, BNode* parent) :
-	left(left), right(right), parent(parent) {}
+BNode::BNode(BNode* left, BNode* right,
+	         BNode* parent)
+	  :left(left), right(right), parent(parent) {}
 
 BNode::~BNode() {
 	safeDelete(left);
 	safeDelete(right);
 }
 
-BNode* BNode::getLeft() {
+BNode* BNode::getLeft() const {
 	return left;
 }
 
-BNode* BNode::getRight() {
+BNode* BNode::getRight() const {
 	return right;
 }
 
-BNode* BNode::getParent() {
+BNode* BNode::getParent() const {
 	return parent;
 }
 
-char BNode::getCharacter() {
+char BNode::getCharacter() const {
 	return character;
 }
 
@@ -48,6 +49,6 @@ void BNode::setCharacter(char newCharacter) {
 	character = newCharacter;
 }
 
-bool BNode::isALeaf() {
+bool BNode::isALeaf() const {
 	return (left == nullptr && right == nullptr);
 }

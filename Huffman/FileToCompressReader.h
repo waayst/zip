@@ -15,7 +15,7 @@ public:
 	~FileToCompressReader();
 
 	void read() override;
-	FileData* getReadData();
+	FileData* getReadData() const override;
 
 private:
 	FileToCompressData* fileToCompressDataPtr;
@@ -31,4 +31,3 @@ public:
 private:
 	std::string* textPtr = nullptr;
 };
-

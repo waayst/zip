@@ -32,4 +32,3 @@ protected:
 	FileReader* reader = nullptr;
 	FileWriter* writer = nullptr;
 };
-

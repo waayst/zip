@@ -30,18 +30,16 @@ public:
 	void setTextPtr  (std::string* newTextPtr);
 
 private:
-	using latenciesListIterator = std::list<std::pair<BNode*, int>>::iterator;
-
 	void createLatenciesMap();
 	void createLatenciesList();
 	void createCodeTree();
 
+	using latenciesListIterator = std::list<std::pair<BNode*, int>>::iterator;
 	latenciesListIterator getMinimalLatencyIterator();
 	std::pair<BNode*, int> extractMinNode();
-
-	std::string* textPtr;
 	std::map<char, int> latenciesMap;
 	std::list<std::pair<BNode*, int>> latenciesList;
-	BNode* codesTree;
-};
 
+	std::string* textPtr = nullptr;
+	BNode* codesTree = nullptr;
+};

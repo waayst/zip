@@ -15,7 +15,7 @@ void CompressedFileReader::read() {
 	readCompressedText();
 }
 
-FileData * CompressedFileReader::getReadData() {
+FileData * CompressedFileReader::getReadData() const {
 	return compressedFileDataPtr;
 }
 

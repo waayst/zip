@@ -22,7 +22,7 @@ void FileWorker::execute(string newFileToReadName,
 void FileWorker::execute() {
 	openFile();
 	if (!reader->fileIsOpened()) {
-		cerr << "file can't be opened" << endl;
+		cerr << "can't open file to read" << endl;
 		return;
 	}
 	if (reader->fileIsEmpty()) {
@@ -62,6 +62,6 @@ void FileWorker::writeEmptyFile() {
 		writer->writeEmptyFile();
 	}
 	else {
-		std::cerr << "can't open file to write";
+		cerr << "can't open file to write";
 	}
 }

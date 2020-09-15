@@ -3,7 +3,8 @@ using namespace std;
 
 DecompressedDataWriter::DecompressedDataWriter() {}
 
-DecompressedDataWriter::DecompressedDataWriter(string* textPtr): textPtr(textPtr) {}
+DecompressedDataWriter::DecompressedDataWriter(string* textPtr)
+	                   :textPtr(textPtr) {}
 
 DecompressedDataWriter::~DecompressedDataWriter() {}
 
