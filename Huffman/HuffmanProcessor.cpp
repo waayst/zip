@@ -8,6 +8,11 @@ HuffmanProcessor::HuffmanProcessor():
 HuffmanProcessor::HuffmanProcessor(std::string* textPtr):
     textPtr(textPtr), codesTree(nullptr) {}
 
+HuffmanProcessor::HuffmanProcessor(FileData * fileToCompressDataPtr) {
+	auto castedData = (FileToCompressData*)fileToCompressDataPtr;
+	setTextPtr(castedData->getTextPtr());
+}
+
 BNode* HuffmanProcessor::getCodesTree() {
 	return codesTree;
 }
@@ -16,7 +21,7 @@ std::string* HuffmanProcessor::getTextPtr() {
 	return textPtr;
 }
 
-void HuffmanProcessor::setText(string* newTextPtr) {
+void HuffmanProcessor::setTextPtr(string* newTextPtr) {
 	textPtr = newTextPtr;
 }
 

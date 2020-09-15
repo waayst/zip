@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "BNode.h"
+#include "CompressedFileReader.h"
 /*
  * Class TreeBuilder builds codes tree from some data.
  *
@@ -21,6 +22,7 @@ public:
 	TreeBuilder();
 	TreeBuilder                   (std::string* charactersDfsOrderPtr,
 				                   std::string* dfsCodePtr);
+	TreeBuilder                   (FileData* compressedFileDataPtr);
 	~TreeBuilder();
 
 	void buildTree();

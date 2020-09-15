@@ -59,24 +59,24 @@ void ArchiveBuilder::setFileCompressedName(string newFileCompressedName) {
 }
 void ArchiveBuilder::openFile() {
 	safeDelete(reader);
-	reader = new FileToCompressReader;
+	reader = new FileToCompressReader{};
 	reader->openBinaryFile(fileToCompressName);
 }
 
 void ArchiveBuilder::read() {
-	reader->read(fileToCompressName);
+	reader->read();
 }
 
 void ArchiveBuilder::process() {
 	safeDelete(processor);
-	processor = new HuffmanProcessor(reader->getTextPtr());
+	processor = new HuffmanProcessor(reader->getReadData());
 	processor->process();
 }
 
 void ArchiveBuilder::compress() {
 	safeDelete(compressor);
 	compressor = new Compressor(
-		reader->getTextPtr(),
+		reader->getReadData(),
 		processor->getCodesTree());
 	compressor->compress();
 }
@@ -86,7 +86,7 @@ void ArchiveBuilder::write() {
 	writer = new CompressedDataWriter(
 		compressor->getCharactersDfsOrderPtr(),
 		compressor->getDfsCodePtr(),
-		reader->getTextPtr()->size(),
+		compressor->getTextSize(),
 		compressor->getCompressedTextPtr());
 	writer->openBinaryFile(fileCompressedName);
 	if (writer->fileIsOpened()) {

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "BNode.h"
+#include "CompressedFileReader.h"
 /*
  * Class Decoder decodes compressed text.
  * 
@@ -24,11 +25,15 @@ public:
 	Decoder();
 	Decoder      (std::uint32_t textSize,
 		          std::string* compressedTextPtr, BNode* codesTree);
+	Decoder      (FileData* compressedFileData, BNode* codesTree);
 	~Decoder();
 
 	void decode();
 
 	std::string* getTextPtr();
+	void setTextSize(std::uint32_t newTextSize);
+	void setCompressedTextPtr(std::string* newCompressedTextPtr);
+	void setCodesTree(BNode* newCodesTree);
 
 private:
 	char getCode();

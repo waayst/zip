@@ -22,12 +22,21 @@ Compressor::Compressor(string* textPtr, BNode* codesTree)
 	       :textPtr(textPtr),
 	        codesTree(codesTree) {}
 
+Compressor::Compressor(FileData * fileDataPtr, BNode * codesTree):codesTree(codesTree) {
+	auto castedData = (FileToCompressData*)fileDataPtr;
+	setTextPtr(castedData->getTextPtr());
+}
+
 std::string* Compressor::getCharactersDfsOrderPtr() {
 	return charactersDfsOrderPtr;
 }
 
 std::string* Compressor::getDfsCodePtr() {
 	return dfsCodePtr;
+}
+
+std::uint32_t Compressor::getTextSize() {
+	return textPtr->size();
 }
 
 std::string* Compressor::getCompressedTextPtr() {

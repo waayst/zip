@@ -1,7 +1,8 @@
 #pragma once
-#include "BNode.h"
 #include <iostream>
 #include <map>
+#include "BNode.h"
+#include "FileToCompressReader.h"
 /*
  * Compressor compressed text using huffman codes tree.
  * 
@@ -21,13 +22,16 @@ class Compressor {
 public:
 	Compressor();
 	Compressor           (std::string* textPtr, BNode* codesTree);
+	Compressor           (FileData* fileDataPtr, BNode* codesTree);
 	~Compressor();
 
 	void compress();
 
 	std::string* getCharactersDfsOrderPtr();
 	std::string* getDfsCodePtr();
+	std::uint32_t getTextSize();
 	std::string* getCompressedTextPtr();
+
 	void setCodesTree   (BNode* newCodesTree);
 	void setTextPtr     (std::string* newTextPtr);
 

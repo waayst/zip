@@ -13,6 +13,12 @@ TreeBuilder::TreeBuilder(string* charactersDfsOrderPtr,
 	         charactersDfsOrderPtr(charactersDfsOrderPtr), 
 	         dfsCodePtr(dfsCodePtr) {}
 
+TreeBuilder::TreeBuilder(FileData * compressedFileDataPtr) {
+	auto castedData = (CompressedFileData*)(compressedFileDataPtr);
+	setCharactersDfsOrderPtr(castedData->getCharactersDfsOrderPtr());
+	setDfsCodePtr(castedData->getDfsCodePtr());
+}
+
 TreeBuilder::~TreeBuilder() {
 	safeDelete(codesTree);
 }

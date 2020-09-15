@@ -18,17 +18,16 @@
  * 3. Read size of not compressed text.
  * 4. Read block for compressed text.
  */
+class CompressedFileData; 
 
 class CompressedFileReader : public FileReader {
 public:
 	CompressedFileReader();
+	~CompressedFileReader();
 
-	void read();
+	void read() override;
 
-	std::string* getCharactersDfsOrderPtr() const;
-	std::string* getDfsCodePtr() const;
-	std::uint32_t getTextSize() const;
-	std::string* getCompressedTextPtr() const;
+	FileData* getReadData() override;
 
 private:
 	void readCharactersDfsOrder();
@@ -42,11 +41,26 @@ private:
 	void readBlock();
 	void readSize();
 
+	CompressedFileData* compressedFileDataPtr = nullptr;
+	std::uint32_t dataSize;
+	std::string* dataPtr = nullptr;
+};
+
+class CompressedFileData : public FileData {
+public:
+	CompressedFileData();
+	std::string* getCharactersDfsOrderPtr() const;
+	std::string* getDfsCodePtr() const;
+	std::uint32_t getTextSize() const;
+	std::string* getCompressedTextPtr() const;
+	void setCharactersDfsOrderPtr(std::string* newCharactersDfsOrderPtr);
+	void setDfsCodePtr(std::string* newDfsCodePtr);
+	void setTextSize(uint32_t newTextSize);
+	void setCompressedTextPtr(std::string* newCompressedTextPtr);
+
+private:
 	std::string* charactersDfsOrderPtr = nullptr;
 	std::string* dfsCodePtr = nullptr;
 	std::uint32_t textSize;
 	std::string* compressedTextPtr = nullptr;
-
-	std::uint32_t dataSize;
-	std::string* dataPtr = nullptr;
 };

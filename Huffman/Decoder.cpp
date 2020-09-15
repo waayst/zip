@@ -10,8 +10,27 @@ Decoder::Decoder(uint32_t textSize,
 	compressedTextPtr(compressedTextPtr),
 	codesTree(codesTree) {}
 
+Decoder::Decoder(FileData * compressedFileDataPtr, BNode* codesTree)
+	    :codesTree(codesTree) {
+	auto castedData = (CompressedFileData*)(compressedFileDataPtr);
+	setTextSize(castedData->getTextSize());
+	setCompressedTextPtr(castedData->getCompressedTextPtr());
+}
+
 string* Decoder::getTextPtr() {
 	return textPtr;
+}
+
+void Decoder::setTextSize(uint32_t newTextSize) {
+	textSize = newTextSize;
+}
+
+void Decoder::setCompressedTextPtr(string * newCompressedTextPtr) {
+	compressedTextPtr = newCompressedTextPtr;
+}
+
+void Decoder::setCodesTree(BNode * newCodesTree) {
+	codesTree = newCodesTree;
 }
 
 Decoder::~Decoder() {

@@ -3,44 +3,37 @@ using namespace std;
 
 CompressedFileReader::CompressedFileReader() {}
 
+CompressedFileReader::~CompressedFileReader() {
+	safeDelete(compressedFileDataPtr);
+}
+
 void CompressedFileReader::read() {
+	compressedFileDataPtr = new CompressedFileData{};
 	readCharactersDfsOrder();
 	readDfsCode();
 	readTextSize();
 	readCompressedText();
 }
 
-string * CompressedFileReader::getCharactersDfsOrderPtr() const {
-	return charactersDfsOrderPtr;
-}
-
-string * CompressedFileReader::getDfsCodePtr() const {
-	return dfsCodePtr;
-}
-
-uint32_t CompressedFileReader::getTextSize() const {
-	return textSize;
-}
-
-string * CompressedFileReader::getCompressedTextPtr() const {
-	return compressedTextPtr;
+FileData * CompressedFileReader::getReadData() {
+	return compressedFileDataPtr;
 }
 
 void CompressedFileReader::readCharactersDfsOrder() {
-	charactersDfsOrderPtr = readBlockAndGetDataPtr();
+	compressedFileDataPtr->setCharactersDfsOrderPtr(readBlockAndGetDataPtr());
 }
 
 void CompressedFileReader::readDfsCode() {
-	dfsCodePtr = readBlockAndGetDataPtr();
+	compressedFileDataPtr->setDfsCodePtr(readBlockAndGetDataPtr());
 }
 
 void CompressedFileReader::readTextSize() {
 	readSize();
-	textSize = getDataSize();
+	compressedFileDataPtr->setTextSize(getDataSize());
 }
 
 void CompressedFileReader::readCompressedText() {
-	compressedTextPtr = readBlockAndGetDataPtr();
+	compressedFileDataPtr->setCompressedTextPtr(readBlockAndGetDataPtr());
 }
 
 string* CompressedFileReader::readBlockAndGetDataPtr() {
@@ -65,4 +58,38 @@ void CompressedFileReader::readBlock() {
 
 void CompressedFileReader::readSize() {
 	filePtr->read((char*)&dataSize, sizeof(dataSize));
+}
+
+CompressedFileData::CompressedFileData() {}
+
+string * CompressedFileData::getCharactersDfsOrderPtr() const {
+	return charactersDfsOrderPtr;
+}
+
+string * CompressedFileData::getDfsCodePtr() const {
+	return dfsCodePtr;
+}
+
+uint32_t CompressedFileData::getTextSize() const {
+	return textSize;
+}
+
+string * CompressedFileData::getCompressedTextPtr() const {
+	return compressedTextPtr;
+}
+
+void CompressedFileData::setCharactersDfsOrderPtr(string * newCharactersDfsOrderPtr) {
+	charactersDfsOrderPtr = newCharactersDfsOrderPtr;
+}
+
+void CompressedFileData::setDfsCodePtr(string * newDfsCodePtr) {
+	dfsCodePtr = newDfsCodePtr;
+}
+
+void CompressedFileData::setTextSize(uint32_t newTextSize) {
+	textSize = newTextSize;
+}
+
+void CompressedFileData::setCompressedTextPtr(string * newCompressedTextPtr) {
+	compressedTextPtr = newCompressedTextPtr;
 }

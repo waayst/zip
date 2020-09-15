@@ -74,15 +74,13 @@ void UnarchiveBuilder::read() {
 
 void UnarchiveBuilder::buildTree() {
 	safeDelete(treeBuilder);
-	treeBuilder = new TreeBuilder(reader->getCharactersDfsOrderPtr(),
-								  reader->getDfsCodePtr());
+	treeBuilder = new TreeBuilder(reader->getReadData());
 	treeBuilder->buildTree();
 }
 
 void UnarchiveBuilder::decode() {
 	safeDelete(decoder);
-	decoder = new Decoder(reader->getTextSize(),
-		                  reader->getCompressedTextPtr(),
+	decoder = new Decoder(reader->getReadData(),
 		                  treeBuilder->getCodesTree());
 	decoder->decode();
 }

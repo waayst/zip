@@ -7,16 +7,27 @@
  *
  * FileToCompressReader gets filename and saves all content of file in one string.
  */
+class FileToCompressData;
 
 class FileToCompressReader : public FileReader {
 public:
 	FileToCompressReader();
 	~FileToCompressReader();
 
-	void read(std::string filename);
+	void read() override;
+	FileData* getReadData();
 
-	std::string* getTextPtr();
+private:
+	FileToCompressData* fileToCompressDataPtr;
+};
 
+class FileToCompressData : public FileData {
+public:
+	FileToCompressData();
+	FileToCompressData(std::string* textPtr);
+	~FileToCompressData();
+	std::string* getTextPtr() const;
+	void setTextPtr(std::string* newTextPtr);
 private:
 	std::string* textPtr = nullptr;
 };

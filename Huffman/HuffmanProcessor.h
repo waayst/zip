@@ -3,6 +3,7 @@
 #include <map>
 #include <list>
 #include "BNode.h"
+#include "FileToCompressReader.h"
 /*
  * Class HuffmanProcessor processed huffman algorithm at giving text.
  *
@@ -19,13 +20,14 @@ class HuffmanProcessor {
 public:
 	HuffmanProcessor();
 	HuffmanProcessor(std::string* textPtr);
+	HuffmanProcessor(FileData* fileToCompressDataPtr);
 	~HuffmanProcessor();
 
 	void process();
 
 	std::string* getTextPtr();
 	BNode* getCodesTree();
-	void setText    (std::string* newTextPtr);
+	void setTextPtr  (std::string* newTextPtr);
 
 private:
 	using latenciesListIterator = std::list<std::pair<BNode*, int>>::iterator;

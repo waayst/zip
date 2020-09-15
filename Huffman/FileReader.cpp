@@ -24,3 +24,5 @@ bool FileReader::fileIsOpened() const {
 bool FileReader::fileIsEmpty() const {
 	return isEmpty;
 }
+
+FileData::~FileData() {}
