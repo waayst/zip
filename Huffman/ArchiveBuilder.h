@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "FileWorker.h"
 #include "FileToCompressReader.h"
 #include "HuffmanProcessor.h"
 #include "Compressor.h"
@@ -16,38 +17,21 @@
  * 3. Compress text.
  * 4. Write auxillary information and compressed text to another file.
  *
- * Maybe should be refactored, having common superclass with UnarchiveBuilder.
  */
 
-class ArchiveBuilder {
+class ArchiveBuilder : public FileWorker {
 public:
 	ArchiveBuilder();
-	ArchiveBuilder            (std::string fileToCompressName,
-				               std::string fileCompressedName);
+	ArchiveBuilder(std::string fileToCompressName,
+				   std::string fileCompressedName);
 	~ArchiveBuilder();
-
-	void archivate            (std::string newFileToCompressName,
-						       std::string newFileCompressedName);
-	void archivate();
-	
-	std::string getFileToCompressName() const;
-	std::string getFileCompressedName() const;
-	void setFileToCompressName(std::string newFileToCompressName);
-	void setFileCompressedName(std::string newFileCompressedName);
-
 private:
-	void openFile();
-	void read();
+	void openFile() override;
+	void workWithReadData() override;
 	void process();
 	void compress();
-	void write();
-	void writeEmptyFile();
+	virtual void write() override;
 
-	std::string fileToCompressName;
-	std::string fileCompressedName;
-
-	FileToCompressReader* reader = nullptr;
 	HuffmanProcessor* processor = nullptr;
 	Compressor* compressor = nullptr;
-	CompressedDataWriter* writer = nullptr;
 };

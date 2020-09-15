@@ -1,4 +1,5 @@
 #pragma once
+#include "FileWorker.h"
 #include "CompressedFileReader.h"
 #include "TreeBuilder.h"
 #include "Decoder.h"
@@ -18,36 +19,20 @@
  *Maybe should be refactored, having common superclass with ArchiveBuilder.
  */
 
-class UnarchiveBuilder{
+class UnarchiveBuilder : public FileWorker {
 public:
 	UnarchiveBuilder();
 	UnarchiveBuilder             (std::string fileToDecompressName,
 		                          std::string fileDecompressedName);
 	~UnarchiveBuilder();
 
-	void unarchivate            (std::string newFileToDecompressName,
-		                         std::string newFileDecompressedName);
-	void unarchivate();
-
-	std::string getFileToDecompressName() const;
-	std::string getFileDecompressedName() const;
-	void setFileToDecompressName(std::string newFileToDecompressName);
-	void setFileDecompressedName(std::string newFileDecompressedName);
-
 private:
-	void openFile();
-	void read();
+	void openFile() override;
+	void workWithReadData();
 	void buildTree();
 	void decode();
-	void write();
-	void writeEmptyFile();
+	void write() override;
 
-
-	std::string fileToDecompressName;
-	std::string fileDecompressedName;
-
-	CompressedFileReader* reader = nullptr;
 	TreeBuilder* treeBuilder = nullptr;
 	Decoder* decoder = nullptr;
-	DecompressedDataWriter* writer = nullptr;
 };

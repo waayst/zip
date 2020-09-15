@@ -11,6 +11,7 @@ public:
 	~FileWriter();
 
 	void openBinaryFile(std::string filename);
+	virtual void write();
 	void writeEmptyFile();
 
 	bool fileIsOpened() const;

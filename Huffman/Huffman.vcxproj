@@ -157,6 +157,7 @@
     <ClCompile Include="CompressedDataWriter.cpp" />
     <ClCompile Include="Decoder.cpp" />
     <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileWorker.cpp" />
     <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="HuffmanProcessor.cpp" />
     <ClCompile Include="main.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="CompressedDataWriter.h" />
     <ClInclude Include="Decoder.h" />
     <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileWorker.h" />
     <ClInclude Include="FileWriter.h" />
     <ClInclude Include="HelpfulMethods.h" />
     <ClInclude Include="HuffmanProcessor.h" />

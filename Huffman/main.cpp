@@ -9,8 +9,8 @@ int main() {
 	string fileCompressed = "TestCompressed.bn";
 	string fileDecompressed = "TestDecompressed.bn";
 	ArchiveBuilder archiver(fileToCompress, fileCompressed);
-	archiver.archivate();
+	archiver.execute();
 	UnarchiveBuilder unarchiver(fileCompressed, fileDecompressed);
-	unarchiver.unarchivate();
+	unarchiver.execute();
 	std::cout << "done";
 }

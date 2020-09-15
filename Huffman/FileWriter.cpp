@@ -14,6 +14,9 @@ void FileWriter::openBinaryFile(std::string filename) {
 	isOpened = filePtr->is_open();
 }
 
+void FileWriter::write()
+{}
+
 void FileWriter::writeEmptyFile() {
 	filePtr->close();
 }

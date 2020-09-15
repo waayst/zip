@@ -81,6 +81,9 @@
     <ClCompile Include="DecompressedDataWriter.cpp">
       <Filter>Source Files\Unarchiver</Filter>
     </ClCompile>
+    <ClCompile Include="FileWorker.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileReader.h">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="DecompressedDataWriter.h">
       <Filter>Header Files\Unacrhiver</Filter>
+    </ClInclude>
+    <ClInclude Include="FileWorker.h">
+      <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

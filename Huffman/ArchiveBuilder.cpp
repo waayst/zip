@@ -4,72 +4,31 @@ using namespace std;
 
 ArchiveBuilder::ArchiveBuilder() {}
 
-ArchiveBuilder::ArchiveBuilder(std::string fileToCompressName,
-				std::string fileCompressedName)
-			   :fileToCompressName(fileToCompressName),
-				fileCompressedName(fileCompressedName) {}
-
+ArchiveBuilder::ArchiveBuilder(string fileToCompressName,
+			    string fileCompressedName)
+	           :FileWorker(fileToCompressName, fileCompressedName)
+			    {}
 
 ArchiveBuilder::~ArchiveBuilder() {
-	safeDelete(reader);
 	safeDelete(processor);
 	safeDelete(compressor);
-	safeDelete(writer);
 }
 
-void ArchiveBuilder::archivate(
-				     string newFileToCompressName,
-	                 string newFileCompressedName) {
-	setFileToCompressName(newFileToCompressName);
-	setFileCompressedName(newFileCompressedName);
-	archivate();
-}
-
-void ArchiveBuilder::archivate() {
-	openFile();
-	if (!reader->fileIsOpened()) {
-		cerr << "file " << fileToCompressName.c_str() << " can't be opened";
-		return;
-	}
-	if (reader->fileIsEmpty()) {
-		cerr << "file " << fileToCompressName.c_str() << " is empty";
-		writeEmptyFile();
-		return;
-	}
-    read();
+void ArchiveBuilder::workWithReadData() {
 	process();
-    compress();
-	write();
+	compress();
 }
 
-string ArchiveBuilder::getFileToCompressName() const {
-	return fileToCompressName;
-}
-
-string ArchiveBuilder::getFileCompressedName() const {
-	return fileCompressedName;
-}
-
-void ArchiveBuilder::setFileToCompressName(string newFileToCompressName) {
-	fileToCompressName = newFileToCompressName;
-}
-
-void ArchiveBuilder::setFileCompressedName(string newFileCompressedName) {
-	fileCompressedName = newFileCompressedName;
-}
 void ArchiveBuilder::openFile() {
 	safeDelete(reader);
 	reader = new FileToCompressReader{};
-	reader->openBinaryFile(fileToCompressName);
-}
-
-void ArchiveBuilder::read() {
-	reader->read();
+	reader->openBinaryFile(fileToReadName);
 }
 
 void ArchiveBuilder::process() {
 	safeDelete(processor);
-	processor = new HuffmanProcessor(reader->getReadData());
+	processor = new HuffmanProcessor(
+		reader->getReadData());
 	processor->process();
 }
 
@@ -88,20 +47,9 @@ void ArchiveBuilder::write() {
 		compressor->getDfsCodePtr(),
 		compressor->getTextSize(),
 		compressor->getCompressedTextPtr());
-	writer->openBinaryFile(fileCompressedName);
+	writer->openBinaryFile(fileToSaveName);
 	if (writer->fileIsOpened()) {
 		writer->write();
-	} else {
-		std::cerr << "can't open file to write";
-	}
-}
-
-void ArchiveBuilder::writeEmptyFile() {
-	safeDelete(writer);
-	writer = new CompressedDataWriter;
-	writer->openBinaryFile(fileCompressedName);
-	if (writer->fileIsOpened()) {
-		writer->writeEmptyFile();
 	} else {
 		std::cerr << "can't open file to write";
 	}
