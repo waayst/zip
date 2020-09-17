@@ -20,44 +20,44 @@ FileData * CompressedFileReader::getReadData() const {
 }
 
 void CompressedFileReader::readCharactersDfsOrder() {
-	compressedFileDataPtr->setCharactersDfsOrderPtr(readBlockAndGetDataPtr());
+	compressedFileDataPtr->setCharactersDfsOrderPtr(readBlockAndGetArrayPtr());
 }
 
 void CompressedFileReader::readDfsCode() {
-	compressedFileDataPtr->setDfsCodePtr(readBlockAndGetDataPtr());
+	compressedFileDataPtr->setDfsCodePtr(readBlockAndGetArrayPtr());
 }
 
 void CompressedFileReader::readTextSize() {
 	readSize();
-	compressedFileDataPtr->setTextSize(getDataSize());
+	compressedFileDataPtr->setTextSize(getTextSize());
 }
 
 void CompressedFileReader::readCompressedText() {
-	compressedFileDataPtr->setCompressedTextPtr(readBlockAndGetDataPtr());
+	compressedFileDataPtr->setCompressedTextPtr(readBlockAndGetArrayPtr());
 }
 
-string* CompressedFileReader::readBlockAndGetDataPtr() {
+string* CompressedFileReader::readBlockAndGetArrayPtr() {
 	readBlock();
-	return getDataPtr();
+	return getArrayPtr();
 }
 
-string* CompressedFileReader::getDataPtr() const {
-	return dataPtr;
+string* CompressedFileReader::getArrayPtr() const {
+	return arrayPtr;
 }
 
-uint32_t CompressedFileReader::getDataSize() const {
-	return dataSize;
+uint32_t CompressedFileReader::getTextSize() const {
+	return arraySize;
 }
 
 void CompressedFileReader::readBlock() {
 	readSize();
-	dataPtr = new string(dataSize, '0');
-	char* ptr = &((*dataPtr)[0]);
-	filePtr->read(ptr, dataSize);
+	arrayPtr = new string(arraySize, '0');
+	char* ptr = &((*arrayPtr)[0]);
+	filePtr->read(ptr, arraySize);
 }
 
 void CompressedFileReader::readSize() {
-	filePtr->read((char*)&dataSize, sizeof(dataSize));
+	filePtr->read((char*)&arraySize, sizeof(arraySize));
 }
 
 CompressedFileData::CompressedFileData() {}

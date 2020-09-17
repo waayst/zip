@@ -36,15 +36,15 @@ private:
 	void readTextSize();
 	void readCompressedText();
 
-	std::string* readBlockAndGetDataPtr();
-	std::string* getDataPtr() const;
-	std::uint32_t getDataSize() const;
+	std::string* readBlockAndGetArrayPtr();
+	std::string* getArrayPtr() const;
+	std::uint32_t getTextSize() const;
 	void readBlock();
 	void readSize();
 
 	CompressedFileData* compressedFileDataPtr = nullptr;
-	std::uint32_t dataSize;
-	std::string* dataPtr = nullptr;
+	std::uint32_t arraySize;
+	std::string* arrayPtr = nullptr;
 };
 
 class CompressedFileData : public FileData {

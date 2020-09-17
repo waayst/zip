@@ -5,6 +5,7 @@
 /* 
  * Class FileToCompressReader reads content of file and saves it.
  *
+ * File content is called "text".  
  * FileToCompressReader gets filename and saves all content of file in one string.
  */
 class FileToCompressData;
